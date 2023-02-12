@@ -4,7 +4,6 @@ public enum InstrumentType {
     PENCIL,
     LINE,
     FILLER,
-    PALETTE,
     ERASER,
     STAMP
 }
