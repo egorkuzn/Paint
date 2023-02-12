@@ -1,4 +1,4 @@
-package ru.nsu.fit.egork.ui.menus;
+package ru.nsu.fit.egork.ui.menu;
 
 import javax.swing.*;
 
