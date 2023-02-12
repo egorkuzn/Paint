@@ -21,6 +21,7 @@ public class MainFrame extends JFrame {
 
     private MainFrame() {
         super("Paint");
+        setNativeView();
         defaultSet();
         addAll();
         pack();
@@ -61,6 +62,14 @@ public class MainFrame extends JFrame {
             }
         } catch (IllegalArgumentException | IOException e) {
             logger.warning("Cannot read image source");
+        }
+    }
+
+    void setNativeView() {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            logger.warning("This OS hasn't 'UIManager.setLookAndFeel' or you need give this app more access");
         }
     }
 }

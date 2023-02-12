@@ -8,7 +8,7 @@ public class Content extends JPanel {
 
     private Content() {
         super(new BorderLayout());
-        add(new DrawingArea());
+        add(DrawingArea.getInstance());
         add(new ToolBar(), BorderLayout.NORTH);
     }
 

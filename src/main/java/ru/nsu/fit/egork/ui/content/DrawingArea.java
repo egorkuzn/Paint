@@ -4,8 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DrawingArea extends JPanel {
-    public DrawingArea() {
+    private static DrawingArea drawingArea = null;
+    private DrawingArea() {
         super(new BorderLayout());
+    }
+
+    public static DrawingArea getInstance() {
+        if (drawingArea == null) {
+            drawingArea = new DrawingArea();
+        }
+
+        return drawingArea;
     }
 
     @Override
