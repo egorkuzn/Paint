@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.util.logging.Logger;
 
 public class ToolButton extends JButton {
-    Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    protected Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public ToolButton(int width, int height, String imagePath, String tip) {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(imagePath);

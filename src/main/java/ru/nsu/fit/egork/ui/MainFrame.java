@@ -11,13 +11,15 @@ import java.io.InputStream;
 import java.util.logging.Logger;
 
 public class MainFrame extends JFrame {
+    static MainFrame mainFrame = null;
+
     Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public static void main(String[] args) {
-        new MainFrame();
+        mainFrame = new MainFrame();
     }
 
-    MainFrame() {
+    private MainFrame() {
         super("Paint");
         defaultSet();
         addAll();
@@ -25,9 +27,17 @@ public class MainFrame extends JFrame {
         setVisible(true);
     }
 
+    public static MainFrame getInstance() {
+        if(mainFrame == null) {
+            mainFrame = new MainFrame();
+        }
+
+        return mainFrame;
+    }
+
     void addAll() {
         var menuBar = Menu.getBar();
-        var content = new Content();
+        var content = Content.getInstance();
 
         setJMenuBar(menuBar);
         setContentPane(content);
@@ -36,7 +46,6 @@ public class MainFrame extends JFrame {
     void defaultSet() {
         setMinimumSize(new Dimension(640, 480));
         setResizable(true);
-        setLocation(400, 800);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setIcon();
     }
