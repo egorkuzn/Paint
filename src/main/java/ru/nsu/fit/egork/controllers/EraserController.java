@@ -1,5 +1,6 @@
 package ru.nsu.fit.egork.controllers;
 
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 
 public class EraserController implements Controller{
@@ -11,5 +12,11 @@ public class EraserController implements Controller{
     }
 
     public static void finishControl() {
+    }
+
+    public static void paint(Graphics g) {
+    }
+
+    public static void mediumControl() {
     }
 }
