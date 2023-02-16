@@ -61,7 +61,7 @@ public class DrawingArea extends JPanel {
                     case STAMP -> StampController.beginControl();
                     case ERASER -> EraserController.beginControl();
                     case FILLER -> FillerController.beginControl();
-                    case PENCIL -> PencilController.beginControl();
+                    case PENCIL -> PencilController.beginControl(e.getPoint());
                 }
             }
 
@@ -72,7 +72,7 @@ public class DrawingArea extends JPanel {
                     case STAMP -> StampController.finishControl();
                     case ERASER -> EraserController.finishControl();
                     case FILLER -> FillerController.finishControl();
-                    case PENCIL -> PencilController.finishControl();
+                    case PENCIL -> PencilController.finishControl(e.getPoint());
                 }
             }
         });
@@ -87,7 +87,7 @@ public class DrawingArea extends JPanel {
                     case STAMP -> StampController.mediumControl();
                     case ERASER -> EraserController.mediumControl();
                     case FILLER -> FillerController.mediumControl();
-                    case PENCIL -> PencilController.mediumControl();
+                    case PENCIL -> PencilController.mediumControl(e.getPoint());
                 }
             }
         });

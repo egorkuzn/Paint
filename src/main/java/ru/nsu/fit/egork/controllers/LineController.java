@@ -34,9 +34,6 @@ public class LineController implements Controller{
 
     public static void mediumControl(Point location) {
         finishPoint = location;
-
-
-
         logger.info("mediumControl");
     }
 
@@ -59,7 +56,7 @@ public class LineController implements Controller{
         if (isStartedPaint) {
             Graphics2D g2 = (Graphics2D) g;
             g2.setColor(Hand.getColor());
-            g2.setStroke(new BasicStroke(4));
+            g2.setStroke(new BasicStroke(Hand.getWidth()));
             g2.drawLine(startPoint.x,
                     startPoint.y,
                     finishPoint.x,

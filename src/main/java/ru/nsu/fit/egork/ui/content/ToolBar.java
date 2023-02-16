@@ -1,5 +1,6 @@
 package ru.nsu.fit.egork.ui.content;
 
+import ru.nsu.fit.egork.ui.content.buttons.sliders.WidthChooseSlider;
 import ru.nsu.fit.egork.ui.content.buttons.stamps.StampsButtonGroup;
 import ru.nsu.fit.egork.ui.content.buttons.tools.FileManagerButton;
 import ru.nsu.fit.egork.ui.content.buttons.tools.InstrumentsButtonGroup;
@@ -23,5 +24,7 @@ public class ToolBar extends JToolBar {
         instrumentsButtonGroup.set(this, bWidth, bHeight);
         addSeparator();
         stampsButtonGroup.set(this, bWidth, bHeight);
+        addSeparator();
+        add(new WidthChooseSlider());
     }
 }
