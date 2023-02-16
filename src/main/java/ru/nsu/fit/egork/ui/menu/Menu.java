@@ -4,15 +4,13 @@ import javax.swing.*;
 
 public class Menu {
     public static JMenuBar getBar() {
-        var file = new File();
-        var view = new View();
-        var help = new Help();
-
         var menuBar = new JMenuBar();
 
-        menuBar.add(file);
-        menuBar.add(view);
-        menuBar.add(help);
+        menuBar.add(new File());
+        menuBar.add(new View());
+        menuBar.add(new Help());
+        menuBar.add(Undo.getInstance());
+        menuBar.add(Redo.getInstance());
 
         return menuBar;
     }
