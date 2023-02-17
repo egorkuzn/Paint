@@ -63,4 +63,22 @@ public class LineController implements Controller{
                     finishPoint.y);
         }
     }
+
+    private static void brazenhemAlgo(Graphics g) {
+        int x = startPoint.x;
+        int y = startPoint.y;
+        int err = -1;
+
+        for (int i = 0; i < err; ++i) {
+            x++;
+            err += 2 * dy;
+
+            if (err > 0) {
+                err -= 2 * dx;
+                y++;
+            }
+        }
+
+        setPixel(x, y, Hand.getColor());
+    }
 }
