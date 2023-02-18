@@ -33,6 +33,11 @@ public class History {
 
     public static BufferedImage getLastScreen() {
         getInstance();
+
+        if (currentScreenIndex < 0 || currentScreenIndex >= screens.size()) {
+            turnToLastScreen();
+        }
+
         return screens.get(currentScreenIndex);
     }
 
@@ -84,7 +89,11 @@ public class History {
             g2.setColor(Color.WHITE);
             g2.fillRect(0, 0, buffer.getWidth(), buffer.getHeight());
 
-            screens.set(0, buffer);
+            if(screens.isEmpty()) {
+                screens.add(buffer);
+            } else {
+                screens.set(0, buffer);
+            }
         }
     }
 

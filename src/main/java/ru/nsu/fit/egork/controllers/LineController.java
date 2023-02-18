@@ -1,17 +1,14 @@
 package ru.nsu.fit.egork.controllers;
 
 import ru.nsu.fit.egork.Hand;
+import ru.nsu.fit.egork.History;
 import ru.nsu.fit.egork.ui.MainFrame;
 import ru.nsu.fit.egork.ui.content.DrawingArea;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.logging.Logger;
-
-import static java.awt.image.BufferedImage.TYPE_INT_RGB;
 
 public class LineController implements Controller{
     private static final Logger logger =  Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -54,31 +51,116 @@ public class LineController implements Controller{
 
     public static void paint(Graphics g) {
         if (isStartedPaint) {
-            Graphics2D g2 = (Graphics2D) g;
-            g2.setColor(Hand.getColor());
-            g2.setStroke(new BasicStroke(Hand.getWidth()));
-            g2.drawLine(startPoint.x,
-                    startPoint.y,
-                    finishPoint.x,
-                    finishPoint.y);
+            if (Hand.getWidth() != 1) {
+                Graphics2D g2 = (Graphics2D) g;
+                g2.setColor(Hand.getColor());
+                g2.setStroke(new BasicStroke(Hand.getWidth()));
+                g2.drawLine(startPoint.x,
+                        startPoint.y,
+                        finishPoint.x,
+                        finishPoint.y);
+            } else {
+                brazenhemAlgo(g);
+            }
         }
     }
 
     private static void brazenhemAlgo(Graphics g) {
-        int x = startPoint.x;
-        int y = startPoint.y;
-        int err = -1;
+        int dx = Math.abs(finishPoint.x - startPoint.x);
+        int dy = Math.abs(finishPoint.y - startPoint.y);
+        int err = -dx;
 
-        for (int i = 0; i < err; ++i) {
-            x++;
-            err += 2 * dy;
+        DrawingArea.getInstance().removeAll();
+        DrawingArea.getInstance().validate();
+        DrawingArea.getInstance().repaint();
 
-            if (err > 0) {
-                err -= 2 * dx;
-                y++;
+        var img = History.getLastScreen();
+        var newImg = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
+        newImg.setData(img.getData());
+
+        if (dy <= dx) {
+            if ((finishPoint.x - startPoint.x) * (finishPoint.y - startPoint.y) >= 0) {
+                int x = Math.min(startPoint.x, finishPoint.x);
+                int y = Math.min(startPoint.y, finishPoint.y);
+
+                for (int i = 0; i < dx; ++i) {
+                    x++;
+                    err += 2 * dy;
+
+                    if (err > 0) {
+                        err -= 2 * dx;
+                        y++;
+                    }
+
+                    if (x < newImg.getWidth() && y < newImg.getHeight()) {
+                        newImg.setRGB(x, y, Hand.getColor().getRGB());
+                    } else {
+                        logger.info("Out of img board");
+                    }
+                }
+            } else {
+                int x = Math.min(startPoint.x, finishPoint.x);
+                int y = Math.max(startPoint.y, finishPoint.y);
+
+                for (int i = 0; i < dx; ++i) {
+                    x++;
+                    err += 2 * dy;
+
+                    if (err > 0) {
+                        err -= 2 * dx;
+                        y--;
+                    }
+
+                    if (x < newImg.getWidth() && y < newImg.getHeight()) {
+                        newImg.setRGB(x, y, Hand.getColor().getRGB());
+                    } else {
+                        logger.info("Out of img board");
+                    }
+                }
+            }
+        } else {
+            if ((finishPoint.x - startPoint.x) * (finishPoint.y - startPoint.y) >= 0) {
+                int x = Math.min(startPoint.x, finishPoint.x);
+                int y = Math.min(startPoint.y, finishPoint.y);
+
+                for (int i = 0; i < dy; ++i) {
+                    y++;
+                    err += 2 * dx;
+
+                    if (err > 0) {
+                        err -= 2 * dy;
+                        x++;
+                    }
+
+                    if (x < newImg.getWidth() && y < newImg.getHeight()) {
+                        newImg.setRGB(x, y, Hand.getColor().getRGB());
+                    } else {
+                        logger.info("Out of img board");
+                    }
+                }
+            } else {
+                int x = Math.max(startPoint.x, finishPoint.x);
+                int y = Math.min(startPoint.y, finishPoint.y);
+
+                for (int i = 0; i < dy; ++i) {
+                    y++;
+                    err += 2 * dx;
+
+                    if (err > 0) {
+                        err -= 2 * dy;
+                        x--;
+                    }
+
+                    if (x < newImg.getWidth() && y < newImg.getHeight()) {
+                        newImg.setRGB(x, y, Hand.getColor().getRGB());
+                    } else {
+                        logger.info("Out of img board");
+                    }
+                }
             }
         }
 
-        setPixel(x, y, Hand.getColor());
+        Graphics2D g2 = (Graphics2D) g;
+        g2.drawImage(newImg, 0, 0, newImg.getWidth(), newImg.getHeight(), DrawingArea.getInstance());
     }
 }

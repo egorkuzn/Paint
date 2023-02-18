@@ -59,7 +59,7 @@ public class DrawingArea extends JPanel {
                 switch (Hand.getInstrument()) {
                     case LINE -> LineController.beginControl(e.getPoint());
                     case STAMP -> StampController.beginControl();
-                    case ERASER -> EraserController.beginControl();
+                    case ERASER -> EraserController.beginControl(e.getPoint());
                     case FILLER -> FillerController.beginControl();
                     case PENCIL -> PencilController.beginControl(e.getPoint());
                 }
@@ -70,7 +70,7 @@ public class DrawingArea extends JPanel {
                 switch (Hand.getInstrument()) {
                     case LINE -> LineController.finishControl(e.getPoint());
                     case STAMP -> StampController.finishControl();
-                    case ERASER -> EraserController.finishControl();
+                    case ERASER -> EraserController.finishControl(e.getPoint());
                     case FILLER -> FillerController.finishControl();
                     case PENCIL -> PencilController.finishControl(e.getPoint());
                 }
@@ -85,7 +85,7 @@ public class DrawingArea extends JPanel {
                         logger.info("MOVED");
                     }
                     case STAMP -> StampController.mediumControl();
-                    case ERASER -> EraserController.mediumControl();
+                    case ERASER -> EraserController.mediumControl(e.getPoint());
                     case FILLER -> FillerController.mediumControl();
                     case PENCIL -> PencilController.mediumControl(e.getPoint());
                 }

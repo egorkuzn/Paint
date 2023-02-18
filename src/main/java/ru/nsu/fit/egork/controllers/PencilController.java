@@ -6,9 +6,9 @@ import ru.nsu.fit.egork.ui.content.DrawingArea;
 import java.awt.*;
 
 public class PencilController implements Controller{
-    private static Point startPoint = new Point(0, 0);
-    private static Point finishPoint = new Point(0, 0);
-    private static boolean show = false;
+    protected static Point startPoint = new Point(0, 0);
+    protected static Point finishPoint = new Point(0, 0);
+    protected static boolean show = false;
 
     public static void control() {
 
