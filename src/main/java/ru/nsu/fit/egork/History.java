@@ -4,8 +4,11 @@ import ru.nsu.fit.egork.ui.content.DrawingArea;
 import ru.nsu.fit.egork.ui.menu.Redo;
 import ru.nsu.fit.egork.ui.menu.Undo;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.Raster;
 import java.util.ArrayList;
 
 public class History {
@@ -13,6 +16,8 @@ public class History {
     private static final ArrayList<BufferedImage> screens = new ArrayList<>();
     private static String currentPath = null;
     private static int currentScreenIndex = -1;
+    private static int maxWidth = 640;
+    private static int maxHeight = 480;
 
     private History() {
 
@@ -48,6 +53,16 @@ public class History {
             screens.subList(currentScreenIndex + 1, screens.size()).clear();
         }
 
+        if (img.getHeight() < maxHeight || img.getWidth() < maxWidth) {
+            BufferedImage newImg = new BufferedImage(maxWidth, maxHeight, getLastScreen().getType());
+            newImg.setData(getLastScreen().getData());
+            newImg.getGraphics().drawImage(img, 0, 0, img.getWidth(), img.getHeight(), null);
+            img = newImg;
+        } else {
+            setMaxHeight(img.getHeight());
+            setMaxWidth(img.getWidth());
+        }
+
         Redo.getInstance().deactivateRedo();
         Undo.getInstance().activateUndo();
         currentScreenIndex++;
@@ -81,13 +96,13 @@ public class History {
             currentScreenIndex = 0;
 
             Undo.getInstance().deactivateUndo();
-            var buffer = new BufferedImage(DrawingArea.getInstance().getWidth(),
-                    DrawingArea.getInstance().getHeight(),
+            var buffer = new BufferedImage(maxWidth,
+                    maxHeight,
                     BufferedImage.TYPE_INT_RGB);
 
             Graphics2D g2 = (Graphics2D) buffer.getGraphics();
             g2.setColor(Color.WHITE);
-            g2.fillRect(0, 0, buffer.getWidth(), buffer.getHeight());
+            g2.fillRect(0, 0, maxWidth, maxHeight);
 
             if(screens.isEmpty()) {
                 screens.add(buffer);
@@ -109,5 +124,25 @@ public class History {
         }
 
         Undo.getInstance().activateUndo();
+    }
+
+    public static void setMaxWidth(int width) {
+        if (width > maxWidth) {
+            maxWidth = width;
+        }
+    }
+
+    public static void setMaxHeight(int height) {
+        if (height > maxHeight) {
+            maxHeight = height;
+        }
+    }
+
+    public static int getMaxHeight() {
+        return maxHeight;
+    }
+
+    public static int getMaxWidth() {
+        return maxWidth;
     }
 }

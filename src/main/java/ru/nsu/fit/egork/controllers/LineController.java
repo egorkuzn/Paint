@@ -75,7 +75,7 @@ public class LineController implements Controller{
         DrawingArea.getInstance().repaint();
 
         var img = History.getLastScreen();
-        var newImg = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
+        var newImg = new BufferedImage(History.getMaxWidth(), History.getMaxHeight(), img.getType());
         newImg.setData(img.getData());
 
         if (dy <= dx) {
@@ -134,6 +134,7 @@ public class LineController implements Controller{
 
                     if (x < newImg.getWidth() && y < newImg.getHeight()) {
                         newImg.setRGB(x, y, Hand.getColor().getRGB());
+                        //newImg.getRGB(x,y)
                     } else {
                         logger.info("Out of img board");
                     }
