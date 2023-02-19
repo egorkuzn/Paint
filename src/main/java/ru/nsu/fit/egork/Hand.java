@@ -9,6 +9,7 @@ public class Hand {
     private static InstrumentType instrument = InstrumentType.PENCIL;
     private static Color color = new Color(0, 0, 0);
     private static int width = 1;
+    private static int angle = 0;
 
     private Hand() {}
 
@@ -47,5 +48,13 @@ public class Hand {
 
     public static int getWidth() {
         return width;
+    }
+
+    public static int getAngle() {
+        return angle;
+    }
+
+    public static void setAngle(int value) {
+        angle = value;
     }
 }
