@@ -17,9 +17,10 @@ public class DrawingArea extends JPanel {
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     private DrawingArea() {
-        super(new BorderLayout());
+        super();
         setMouseListener();
         setBackground(Color.WHITE);
+        setPreferredSize(new Dimension(History.getMaxWidth(), History.getMaxHeight()));
     }
 
     public static DrawingArea getInstance() {

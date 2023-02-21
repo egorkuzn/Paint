@@ -78,6 +78,7 @@ public class History {
     }
 
     public static String getPath() {
+        getInstance();
         return currentPath;
     }
 
@@ -129,12 +130,14 @@ public class History {
     public static void setMaxWidth(int width) {
         if (width > maxWidth) {
             maxWidth = width;
+            DrawingArea.getInstance().setPreferredSize(new Dimension(maxWidth, maxHeight));
         }
     }
 
     public static void setMaxHeight(int height) {
         if (height > maxHeight) {
             maxHeight = height;
+            DrawingArea.getInstance().setPreferredSize(new Dimension(maxWidth, maxHeight));
         }
     }
 

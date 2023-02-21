@@ -20,8 +20,6 @@ public class WidthChooseSlider extends JSlider {
         setPaintLabels(true);
         setPaintTrack(true);
 
-        setMaximumSize(new Dimension(200, 30));
-
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {

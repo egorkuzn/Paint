@@ -15,13 +15,13 @@ public class ClearAll extends JMenuItem {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                var buffer = new BufferedImage(DrawingArea.getInstance().getWidth(),
-                        DrawingArea.getInstance().getHeight(),
+                var buffer = new BufferedImage(History.getMaxWidth(),
+                        History.getMaxHeight(),
                         BufferedImage.TYPE_INT_RGB);
 
                 Graphics2D g2 = (Graphics2D) buffer.getGraphics();
                 g2.setColor(Color.WHITE);
-                g2.fillRect(0, 0, buffer.getWidth(), buffer.getHeight());
+                g2.fillRect(0, 0, History.getMaxWidth(), History.getMaxHeight());
 
                 History.saveScreen(buffer);
             }

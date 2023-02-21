@@ -1,7 +1,6 @@
 package ru.nsu.fit.egork.ui.content.buttons.tools;
 
 import ru.nsu.fit.egork.History;
-import ru.nsu.fit.egork.instruments.InstrumentType;
 import ru.nsu.fit.egork.ui.MainFrame;
 
 import javax.imageio.ImageIO;
@@ -24,10 +23,15 @@ public class FileManagerButton extends ToolButton {
                 var saveChooser = new JFileChooser();
                 saveChooser.showDialog(MainFrame.getInstance(), "Open");
                 saveChooser.setFileSelectionMode(JFileChooser.OPEN_DIALOG);
-                History.setPath(saveChooser.getSelectedFile().getPath());
+
+                if (saveChooser.getSelectedFile() != null) {
+                    History.setPath(saveChooser.getSelectedFile().getPath());
+                }
 
                 try {
-                    History.saveScreen(ImageIO.read(new File(History.getPath())));
+                    if (History.getPath() != null) {
+                        History.saveScreen(ImageIO.read(new File(History.getPath())));
+                    }
                 } catch (IllegalArgumentException | IOException ex) {
                     logger.warning("Cannot read chosen image");
                 }
