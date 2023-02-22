@@ -10,7 +10,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class WidthChooseSlider extends JSlider {
-    public WidthChooseSlider() {
+    private static WidthChooseSlider widthChooseSlider = null;
+
+    private WidthChooseSlider() {
         super(HORIZONTAL, 1, 10, Hand.getWidth());
         setToolTipText("Width setting: " + getValue());
         setMajorTickSpacing(9);
@@ -35,5 +37,17 @@ public class WidthChooseSlider extends JSlider {
                 setToolTipText("Width setting: " + getValue());
             }
         });
+    }
+
+    public static WidthChooseSlider getInstance() {
+        if (widthChooseSlider == null) {
+            widthChooseSlider = new WidthChooseSlider();
+        }
+
+        return widthChooseSlider;
+    }
+
+    public static void set(int value) {
+        getInstance().setValue(value);
     }
 }

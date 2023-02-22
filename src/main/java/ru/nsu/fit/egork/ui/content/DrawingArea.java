@@ -72,7 +72,7 @@ public class DrawingArea extends JPanel {
                     case LINE -> LineController.finishControl(e.getPoint());
                     case STAMP -> StampController.finishControl();
                     case ERASER -> EraserController.finishControl(e.getPoint());
-                    case FILLER -> FillerController.finishControl();
+                    case FILLER -> FillerController.finishControl(e.getPoint());
                     case PENCIL -> PencilController.finishControl(e.getPoint());
                 }
             }

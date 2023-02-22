@@ -1,6 +1,8 @@
 package ru.nsu.fit.egork;
 
 import ru.nsu.fit.egork.ui.content.DrawingArea;
+import ru.nsu.fit.egork.ui.content.buttons.sliders.RotationChooseSlider;
+import ru.nsu.fit.egork.ui.content.buttons.textfields.RotationTextField;
 import ru.nsu.fit.egork.ui.menu.Redo;
 import ru.nsu.fit.egork.ui.menu.Undo;
 

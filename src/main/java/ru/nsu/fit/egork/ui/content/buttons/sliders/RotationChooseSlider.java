@@ -1,6 +1,7 @@
 package ru.nsu.fit.egork.ui.content.buttons.sliders;
 
 import ru.nsu.fit.egork.Hand;
+import ru.nsu.fit.egork.ui.content.buttons.textfields.RotationTextField;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,11 +11,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class RotationChooseSlider  extends JSlider {
-    public RotationChooseSlider() {
-        super(HORIZONTAL, -180, 180, Hand.getAngle());
+    private static RotationChooseSlider rotationChooseSlider = null;
+
+    private RotationChooseSlider() {
+        super(HORIZONTAL, 0, 360, Hand.getAngle());
         setToolTipText("Angle setting: " + getValue());
 
-        for(int i = -180; i < 180; i += 45) {
+        for(int i = 0; i < 360; i += 45) {
             setMajorTickSpacing(45);
             setMinorTickSpacing(0);
         }
@@ -27,6 +30,7 @@ public class RotationChooseSlider  extends JSlider {
             @Override
             public void mouseReleased(MouseEvent e) {
                 Hand.setAngle(getValue());
+                RotationTextField.set(getValue());
                 setToolTipText("Angle setting: " + getValue());
             }
         });
@@ -35,8 +39,21 @@ public class RotationChooseSlider  extends JSlider {
             @Override
             public void keyReleased(KeyEvent e) {
                 Hand.setAngle(getValue());
+                RotationTextField.set(getValue());
                 setToolTipText("Angle setting: " + getValue());
             }
         });
+    }
+
+    public static RotationChooseSlider getInstance() {
+        if (rotationChooseSlider == null) {
+            rotationChooseSlider = new RotationChooseSlider();
+        }
+
+        return rotationChooseSlider;
+    }
+
+    public static void set(int value) {
+        getInstance().setValue(value);
     }
 }

@@ -20,6 +20,7 @@ public class SettingsFrame extends JFrame {
         super("Settings");
         defaultSet();
         controllersSet();
+        setLayout(null);
     }
 
     public static SettingsFrame getInstance() {
@@ -35,7 +36,7 @@ public class SettingsFrame extends JFrame {
     void defaultSet() {
         setMinimumSize(new Dimension(300, 300));
         setLocation(100, 100);
-        setResizable(false);
+        setResizable(true);
         setIcon();
     }
 
@@ -54,25 +55,33 @@ public class SettingsFrame extends JFrame {
     }
 
     private void controllersSet() {
-        WidthChooseSlider b1 = new WidthChooseSlider();
-        RotationChooseSlider b2 = new RotationChooseSlider();
-        WidthTextField b3 = new WidthTextField();
-        RotationTextField b4 = new RotationTextField();
+        WidthChooseSlider b1 = WidthChooseSlider.getInstance();
+        RotationChooseSlider b2 = RotationChooseSlider.getInstance();
+        WidthTextField b3 = WidthTextField.getInstance();
+        RotationTextField b4 = RotationTextField.getInstance();
 
-        add(b1);
+        Insets insets = getInsets();
+
+
         add(b2);
+        add(b1);
         add(b3);
         add(b4);
 
-        Insets insets = getInsets();
+        b1.setVisible(true);
+        b2.setVisible(true);
+
         Dimension size = b1.getPreferredSize();
         b1.setBounds(insets.left, 5 + insets.top, size.width, size.height);
         b2.setBounds(insets.left, 60 + insets.top, size.width, size.height);
 
         size = b3.getPreferredSize();
-        b3.setBounds(225 + insets.left, 5 + insets.top, (int) (size.width * 1.5), size.height + 3);
-        b4.setBounds(225 + insets.left, 60 + insets.top, (int) (size.width * 1.5), size.height + 3);
+        b3.setBounds(225 + insets.left, 5 + insets.top, 50, size.height + 3);
+        b4.setBounds(225 + insets.left, 60 + insets.top, 50, size.height + 3);
 
-        setSize(300 + insets.left + insets.right, 125 + insets.top + insets.bottom);
+
+        setSize(200 + insets.left + insets.right, 125 + insets.top + insets.bottom);
     }
+
+
 }

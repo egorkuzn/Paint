@@ -1,6 +1,10 @@
 package ru.nsu.fit.egork;
 
 import ru.nsu.fit.egork.instruments.InstrumentType;
+import ru.nsu.fit.egork.ui.content.buttons.sliders.RotationChooseSlider;
+import ru.nsu.fit.egork.ui.content.buttons.sliders.WidthChooseSlider;
+import ru.nsu.fit.egork.ui.content.buttons.textfields.RotationTextField;
+import ru.nsu.fit.egork.ui.content.buttons.textfields.WidthTextField;
 
 import java.awt.*;
 
@@ -44,6 +48,8 @@ public class Hand {
 
     public static void setWidth(int newValue) {
         width = newValue;
+        WidthTextField.set(newValue);
+        WidthChooseSlider.set(newValue);
     }
 
     public static int getWidth() {
@@ -56,5 +62,7 @@ public class Hand {
 
     public static void setAngle(int value) {
         angle = value;
+        RotationChooseSlider.set(value);
+        RotationTextField.set(value);
     }
 }
