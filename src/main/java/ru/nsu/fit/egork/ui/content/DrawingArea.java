@@ -61,7 +61,7 @@ public class DrawingArea extends JPanel {
                     case LINE -> LineController.beginControl(e.getPoint());
                     case STAMP -> StampController.beginControl();
                     case ERASER -> EraserController.beginControl(e.getPoint());
-                    case FILLER -> FillerController.beginControl();
+                    case FILLER -> FillerController.beginControl(e.getPoint());
                     case PENCIL -> PencilController.beginControl(e.getPoint());
                 }
             }
@@ -70,9 +70,9 @@ public class DrawingArea extends JPanel {
             public void mouseReleased(MouseEvent e) {
                 switch (Hand.getInstrument()) {
                     case LINE -> LineController.finishControl(e.getPoint());
-                    case STAMP -> StampController.finishControl();
+                    case STAMP -> StampController.finishControl(e.getPoint());
                     case ERASER -> EraserController.finishControl(e.getPoint());
-                    case FILLER -> FillerController.finishControl(e.getPoint());
+                    case FILLER -> FillerController.finishControl();
                     case PENCIL -> PencilController.finishControl(e.getPoint());
                 }
             }

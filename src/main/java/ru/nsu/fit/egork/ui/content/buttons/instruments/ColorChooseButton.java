@@ -1,11 +1,8 @@
 package ru.nsu.fit.egork.ui.content.buttons.instruments;
 
-import ru.nsu.fit.egork.instruments.InstrumentType;
 import ru.nsu.fit.egork.ui.content.Content;
-import ru.nsu.fit.egork.ui.content.DrawingArea;
 import ru.nsu.fit.egork.ui.content.buttons.tools.ToolButton;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,10 +23,9 @@ public class ColorChooseButton extends ToolButton {
                     logger.info("Pushed color");
                     colorChooser.setLocation(0, 0);
                     // TODO: переделать, чтобы не затиралось
-                    DrawingArea.getInstance().removeAll();
-                    DrawingArea.getInstance().revalidate();
-                    DrawingArea.getInstance().repaint();
+
                     Content.getInstance().add(colorChooser, BorderLayout.SOUTH);
+                    Content.getInstance().revalidate();
                 } else {
                     logger.info("Cleared");
                     colorChooser.removeAll();
