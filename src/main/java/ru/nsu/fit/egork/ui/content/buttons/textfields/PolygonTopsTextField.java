@@ -1,20 +1,17 @@
 package ru.nsu.fit.egork.ui.content.buttons.textfields;
 
 import ru.nsu.fit.egork.Hand;
-import ru.nsu.fit.egork.History;
 
-import java.awt.event.InputMethodEvent;
-import java.awt.event.InputMethodListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class WidthTextField extends BaseTextField {
-    private static WidthTextField widthTextField = null;
-    private static final int limit = 10;
+public class PolygonTopsTextField extends BaseTextField {
+    private static PolygonTopsTextField polygonTopsTextField = null;
+    private static final int limit = 100;
 
-    private WidthTextField() {
-        super(10);
-        setText(String.valueOf(Hand.getWidth()));
+    public PolygonTopsTextField() {
+        super(limit);
+        setText(String.valueOf(Hand.getTopsCount()));
 
         addKeyListener(new KeyAdapter() {
             @Override
@@ -23,21 +20,21 @@ public class WidthTextField extends BaseTextField {
                     int value = Integer.parseInt(getInstance().getText());
 
                     if (value > limit || value < 0) {
-                        value = 1;
+                        value = 50;
                     }
 
-                    Hand.setWidth(value);
+                    Hand.setTopsCount(value);
                 }
             }
         });
     }
 
-    public static WidthTextField getInstance() {
-        if (widthTextField == null) {
-            widthTextField = new WidthTextField();
+    public static PolygonTopsTextField getInstance() {
+        if (polygonTopsTextField == null) {
+            polygonTopsTextField = new PolygonTopsTextField();
         }
 
-        return widthTextField;
+        return polygonTopsTextField;
     }
 
     public static void set(int value) {

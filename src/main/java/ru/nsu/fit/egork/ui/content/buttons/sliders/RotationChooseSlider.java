@@ -4,7 +4,6 @@ import ru.nsu.fit.egork.Hand;
 import ru.nsu.fit.egork.ui.content.buttons.textfields.RotationTextField;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -14,7 +13,7 @@ public class RotationChooseSlider  extends JSlider {
     private static RotationChooseSlider rotationChooseSlider = null;
 
     private RotationChooseSlider() {
-        super(HORIZONTAL, 0, 360, Hand.getAngle());
+        super(HORIZONTAL, 0, 360, Hand.getAngleDegreese());
         setToolTipText("Angle setting: " + getValue());
 
         for(int i = 0; i < 360; i += 45) {
@@ -30,7 +29,6 @@ public class RotationChooseSlider  extends JSlider {
             @Override
             public void mouseReleased(MouseEvent e) {
                 Hand.setAngle(getValue());
-                RotationTextField.set(getValue());
                 setToolTipText("Angle setting: " + getValue());
             }
         });
@@ -39,7 +37,6 @@ public class RotationChooseSlider  extends JSlider {
             @Override
             public void keyReleased(KeyEvent e) {
                 Hand.setAngle(getValue());
-                RotationTextField.set(getValue());
                 setToolTipText("Angle setting: " + getValue());
             }
         });

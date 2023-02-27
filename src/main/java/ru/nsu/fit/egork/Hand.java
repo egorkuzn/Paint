@@ -1,8 +1,12 @@
 package ru.nsu.fit.egork;
 
 import ru.nsu.fit.egork.instruments.InstrumentType;
+import ru.nsu.fit.egork.ui.content.buttons.sliders.PolygonTopsSlider;
+import ru.nsu.fit.egork.ui.content.buttons.sliders.RadiusChooseSlider;
 import ru.nsu.fit.egork.ui.content.buttons.sliders.RotationChooseSlider;
 import ru.nsu.fit.egork.ui.content.buttons.sliders.WidthChooseSlider;
+import ru.nsu.fit.egork.ui.content.buttons.textfields.PolygonTopsTextField;
+import ru.nsu.fit.egork.ui.content.buttons.textfields.RadiusTextField;
 import ru.nsu.fit.egork.ui.content.buttons.textfields.RotationTextField;
 import ru.nsu.fit.egork.ui.content.buttons.textfields.WidthTextField;
 
@@ -14,6 +18,8 @@ public class Hand {
     private static Color color = new Color(0, 0, 0);
     private static int width = 1;
     private static int angle = 0;
+    private static int topsCount = 5;
+    private static int radiusValue = 1;
 
     private Hand() {}
 
@@ -56,7 +62,11 @@ public class Hand {
         return width;
     }
 
-    public static int getAngle() {
+    public static double getAngle() {
+        return angle / 180.0 * Math.PI;
+    }
+
+    public static int getAngleDegreese() {
         return angle;
     }
 
@@ -64,5 +74,25 @@ public class Hand {
         angle = value;
         RotationChooseSlider.set(value);
         RotationTextField.set(value);
+    }
+
+    public static int getTopsCount() {
+        return topsCount;
+    }
+
+    public static void setTopsCount(int value) {
+        topsCount = value;
+        PolygonTopsSlider.set(value);
+        PolygonTopsTextField.set(value);
+    }
+
+    public static int getRadius() {
+        return radiusValue;
+    }
+
+    public static void setRadius(int value) {
+        radiusValue = value;
+        RadiusChooseSlider.set(value);
+        RadiusTextField.set(value);
     }
 }

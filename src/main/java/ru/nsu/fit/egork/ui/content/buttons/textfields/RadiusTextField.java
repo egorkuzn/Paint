@@ -1,20 +1,17 @@
 package ru.nsu.fit.egork.ui.content.buttons.textfields;
 
 import ru.nsu.fit.egork.Hand;
-import ru.nsu.fit.egork.History;
 
-import java.awt.event.InputMethodEvent;
-import java.awt.event.InputMethodListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class WidthTextField extends BaseTextField {
-    private static WidthTextField widthTextField = null;
-    private static final int limit = 10;
+public class RadiusTextField extends BaseTextField {
+    private static RadiusTextField radiusTextField = null;
+    private static final int limit = 1000;
 
-    private WidthTextField() {
-        super(10);
-        setText(String.valueOf(Hand.getWidth()));
+    public RadiusTextField() {
+        super(limit);
+        setText(String.valueOf(Hand.getRadius()));
 
         addKeyListener(new KeyAdapter() {
             @Override
@@ -23,21 +20,21 @@ public class WidthTextField extends BaseTextField {
                     int value = Integer.parseInt(getInstance().getText());
 
                     if (value > limit || value < 0) {
-                        value = 1;
+                        value = 500;
                     }
 
-                    Hand.setWidth(value);
+                    Hand.setRadius(value);
                 }
             }
         });
     }
 
-    public static WidthTextField getInstance() {
-        if (widthTextField == null) {
-            widthTextField = new WidthTextField();
+    public static RadiusTextField getInstance() {
+        if (radiusTextField == null) {
+            radiusTextField = new RadiusTextField();
         }
 
-        return widthTextField;
+        return radiusTextField;
     }
 
     public static void set(int value) {

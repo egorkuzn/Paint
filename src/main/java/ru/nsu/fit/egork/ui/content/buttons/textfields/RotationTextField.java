@@ -15,6 +15,7 @@ public class RotationTextField extends BaseTextField {
 
     private RotationTextField() {
         super(limit);
+        setText(String.valueOf(Hand.getAngleDegreese()));
 
         addKeyListener(new KeyAdapter() {
             @Override

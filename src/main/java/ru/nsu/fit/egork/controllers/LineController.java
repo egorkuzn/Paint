@@ -37,7 +37,6 @@ public class LineController implements Controller{
     public static void finishControl(Point location) {
         DrawingArea.takeSnapshot();
         isStartedPaint = false;
-        finishPoint = location;
         logger.info("finishControl");
     }
 
