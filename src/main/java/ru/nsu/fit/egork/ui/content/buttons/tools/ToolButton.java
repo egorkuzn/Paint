@@ -2,6 +2,7 @@ package ru.nsu.fit.egork.ui.content.buttons.tools;
 
 import ru.nsu.fit.egork.Hand;
 import ru.nsu.fit.egork.instruments.InstrumentType;
+import ru.nsu.fit.egork.instruments.StampType;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -47,6 +48,10 @@ public class ToolButton extends JButton {
                 if (isPressed) {
                     logger.info(tip.toUpperCase() + " chosen");
                     Hand.take(instrument);
+
+                    if (instrument == InstrumentType.STAMP) {
+                        Hand.setStampType(StampType.valueOf(tip));
+                    }
                 } else {
                     logger.info("PENCIL chosen");
                     Hand.take(InstrumentType.PENCIL);

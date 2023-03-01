@@ -2,6 +2,7 @@ package ru.nsu.fit.egork.ui.content.buttons.stamps;
 
 import ru.nsu.fit.egork.Hand;
 import ru.nsu.fit.egork.instruments.InstrumentType;
+import ru.nsu.fit.egork.instruments.StampType;
 import ru.nsu.fit.egork.ui.content.buttons.tools.ToolButton;
 
 import java.awt.event.MouseAdapter;
@@ -12,7 +13,7 @@ public class PolygonButton extends ToolButton {
         super(width,
                 height,
                 "stamps/polygon.png",
-                "Polygon",
+                "POLYGON",
                 InstrumentType.STAMP);
     }
 }

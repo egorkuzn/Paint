@@ -28,7 +28,6 @@ public class RadiusChooseSlider extends JSlider {
             @Override
             public void mouseReleased(MouseEvent e) {
                 Hand.setRadius(getValue());
-                RotationTextField.set(getValue());
                 setToolTipText("Radius setting: " + getValue());
             }
         });
@@ -37,7 +36,6 @@ public class RadiusChooseSlider extends JSlider {
             @Override
             public void keyReleased(KeyEvent e) {
                 Hand.setRadius(getValue());
-                RotationTextField.set(getValue());
                 setToolTipText("Radius setting: " + getValue());
             }
         });

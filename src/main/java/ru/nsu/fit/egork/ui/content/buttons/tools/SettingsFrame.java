@@ -38,9 +38,9 @@ public class SettingsFrame extends JFrame {
     }
 
     void defaultSet() {
-        setMinimumSize(new Dimension(300, 300));
+        setMinimumSize(new Dimension(360, 260));
+        setResizable(false);
         setLocation(100, 100);
-        setResizable(true);
         setIcon();
     }
 
@@ -59,14 +59,18 @@ public class SettingsFrame extends JFrame {
     }
 
     private void controllersSet() {
-        WidthChooseSlider b1 = WidthChooseSlider.getInstance();
-        RotationChooseSlider b2 = RotationChooseSlider.getInstance();
-        RadiusChooseSlider b3 = RadiusChooseSlider.getInstance();
-        PolygonTopsSlider b4 = PolygonTopsSlider.getInstance();
-        PolygonTopsTextField b5 = PolygonTopsTextField.getInstance();
-        WidthTextField b6 = WidthTextField.getInstance();
-        RotationTextField b7 = RotationTextField.getInstance();
-        RadiusTextField b8 = RadiusTextField.getInstance();
+        var b1 = WidthChooseSlider.getInstance();
+        var b2 = RotationChooseSlider.getInstance();
+        var b3 = RadiusChooseSlider.getInstance();
+        var b4 = PolygonTopsSlider.getInstance();
+        var b5 = PolygonTopsTextField.getInstance();
+        var b6 = WidthTextField.getInstance();
+        var b7 = RotationTextField.getInstance();
+        var b8 = RadiusTextField.getInstance();
+        var widthText = new JLabel("Width");
+        var rotationAngleText = new JLabel("<html>Rotation<br>angle</html>");
+        var radiusText = new JLabel("Radius");
+        var polygonTopsCountText = new JLabel("<html>Polygon tops<br>count</html>");
 
         Insets insets = getInsets();
 
@@ -78,6 +82,10 @@ public class SettingsFrame extends JFrame {
         add(b6);
         add(b7);
         add(b8);
+        add(widthText);
+        add(rotationAngleText);
+        add(radiusText);
+        add(polygonTopsCountText);
 
         b1.setVisible(true);
         b2.setVisible(true);
@@ -94,7 +102,12 @@ public class SettingsFrame extends JFrame {
         b8.setBounds(225 + insets.left, 115 + insets.top, 50, size.height + 3);
         b5.setBounds(225 + insets.left, 170 + insets.top, 50, size.height + 3);
 
-        setSize(200 + insets.left + insets.right, 125 + insets.top + insets.bottom);
+        widthText.setBounds(280 + insets.left, 5 + insets.top, 200, size.height + 3);
+        rotationAngleText.setBounds(280 + insets.left, 60 + insets.top, 200, size.height + 3);
+        radiusText.setBounds(280 + insets.left, 115 + insets.top, 200, size.height + 3);
+        polygonTopsCountText.setBounds(280 + insets.left, 170 + insets.top, 200, size.height + 3);
+
+        setSize(300 + insets.left + insets.right, 125 + insets.top + insets.bottom);
     }
 
 

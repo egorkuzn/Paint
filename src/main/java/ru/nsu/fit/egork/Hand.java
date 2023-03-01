@@ -1,6 +1,7 @@
 package ru.nsu.fit.egork;
 
 import ru.nsu.fit.egork.instruments.InstrumentType;
+import ru.nsu.fit.egork.instruments.StampType;
 import ru.nsu.fit.egork.ui.content.buttons.sliders.PolygonTopsSlider;
 import ru.nsu.fit.egork.ui.content.buttons.sliders.RadiusChooseSlider;
 import ru.nsu.fit.egork.ui.content.buttons.sliders.RotationChooseSlider;
@@ -20,6 +21,7 @@ public class Hand {
     private static int angle = 0;
     private static int topsCount = 5;
     private static int radiusValue = 1;
+    private static StampType stampType = StampType.POLYGON;
 
     private Hand() {}
 
@@ -94,5 +96,13 @@ public class Hand {
         radiusValue = value;
         RadiusChooseSlider.set(value);
         RadiusTextField.set(value);
+    }
+
+    public static void setStampType(StampType type) {
+        stampType = type;
+    }
+
+    public static StampType getStampType() {
+        return stampType;
     }
 }
