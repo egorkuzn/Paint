@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'ru.nsu.fit.egork'
+group 'ru.nsu.fit.g20204.kuznetsov'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -16,4 +16,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'ru.nsu.fit.egork.ui.MainFrame'
+        )
+    }
 }
