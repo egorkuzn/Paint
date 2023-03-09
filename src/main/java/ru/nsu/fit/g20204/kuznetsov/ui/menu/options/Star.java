@@ -1,9 +1,8 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.menu.options;
 
-import ru.nsu.fit.egork.instruments.StampType;
-import ru.nsu.fit.egork.ui.content.buttons.instruments.ColorChooseButton;
-import ru.nsu.fit.egork.ui.content.buttons.instruments.LineButton;
-import ru.nsu.fit.egork.ui.content.buttons.stamps.StampsButtonGroup;
+
+import ru.nsu.fit.g20204.kuznetsov.instruments.StampType;
+import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.stamps.StampsButtonGroup;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;

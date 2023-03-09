@@ -1,7 +1,6 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.menu;
 
-import ru.nsu.fit.egork.ui.menu.help.About;
-import ru.nsu.fit.egork.ui.menu.help.Instruction;
+import ru.nsu.fit.g20204.kuznetsov.ui.menu.help.*;
 
 import javax.swing.*;
 

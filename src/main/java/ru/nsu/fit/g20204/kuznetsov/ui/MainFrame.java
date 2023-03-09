@@ -1,6 +1,7 @@
 package ru.nsu.fit.g20204.kuznetsov.ui;
 
-import ru.nsu.fit.egork.ui.content.Content;
+import ru.nsu.fit.g20204.kuznetsov.ui.content.Content;
+import ru.nsu.fit.g20204.kuznetsov.ui.menu.Menu;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

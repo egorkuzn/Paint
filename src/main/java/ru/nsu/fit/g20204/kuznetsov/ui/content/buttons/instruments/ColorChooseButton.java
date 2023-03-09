@@ -1,7 +1,7 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.instruments;
 
-import ru.nsu.fit.egork.ui.content.Content;
-import ru.nsu.fit.egork.ui.content.buttons.tools.ToolButton;
+import ru.nsu.fit.g20204.kuznetsov.ui.content.Content;
+import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.tools.ToolButton;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,7 +24,6 @@ public class ColorChooseButton extends ToolButton {
                     colorChooser = new Palette();
                     logger.info("Pushed color");
                     colorChooser.setLocation(0, 0);
-                    // TODO: переделать, чтобы не затиралось
 
                     Content.getInstance().add(colorChooser, BorderLayout.SOUTH);
                     Content.getInstance().revalidate();

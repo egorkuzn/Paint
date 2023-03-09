@@ -2,6 +2,7 @@ package ru.nsu.fit.g20204.kuznetsov.ui.content;
 
 import ru.nsu.fit.g20204.kuznetsov.Hand;
 import ru.nsu.fit.g20204.kuznetsov.History;
+import ru.nsu.fit.g20204.kuznetsov.controllers.*;
 
 import javax.swing.*;
 import java.awt.*;

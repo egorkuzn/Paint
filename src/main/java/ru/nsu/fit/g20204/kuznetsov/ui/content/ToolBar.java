@@ -1,10 +1,7 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.content;
 
-import ru.nsu.fit.egork.ui.content.buttons.tools.ColorButtonGroup;
-import ru.nsu.fit.egork.ui.content.buttons.stamps.StampsButtonGroup;
-import ru.nsu.fit.egork.ui.content.buttons.tools.FileManagerButton;
-import ru.nsu.fit.egork.ui.content.buttons.tools.InstrumentsButtonGroup;
-import ru.nsu.fit.egork.ui.content.buttons.tools.SettingsButton;
+import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.stamps.*;
+import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.tools.*;
 
 import javax.swing.*;
 

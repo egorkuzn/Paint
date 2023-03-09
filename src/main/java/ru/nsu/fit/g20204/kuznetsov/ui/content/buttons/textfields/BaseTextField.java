@@ -1,14 +1,10 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.textfields;
 
-import ru.nsu.fit.egork.History;
-
 import javax.swing.*;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.MaskFormatter;
 import javax.swing.text.PlainDocument;
 import java.awt.*;
-import java.text.ParseException;
 import java.util.logging.Logger;
 
 public class BaseTextField extends JTextField {

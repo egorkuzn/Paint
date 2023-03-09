@@ -2,6 +2,8 @@ package ru.nsu.fit.g20204.kuznetsov;
 
 import ru.nsu.fit.g20204.kuznetsov.instruments.InstrumentType;
 import ru.nsu.fit.g20204.kuznetsov.instruments.StampType;
+import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.sliders.*;
+import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.textfields.*;
 
 import java.awt.*;
 
@@ -27,7 +29,6 @@ public class Hand {
 
     public static void take(InstrumentType newInstrument) {
         getInstance();
-        // TODO: Необходимо добавить action или listener связанный
         instrument = newInstrument;
     }
 

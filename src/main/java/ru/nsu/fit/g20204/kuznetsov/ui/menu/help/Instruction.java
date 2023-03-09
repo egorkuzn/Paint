@@ -1,6 +1,6 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.menu.help;
 
-import ru.nsu.fit.egork.ui.MainFrame;
+import ru.nsu.fit.g20204.kuznetsov.ui.MainFrame;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;

@@ -1,9 +1,7 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.menu;
 
-import ru.nsu.fit.egork.ui.menu.file.New;
-import ru.nsu.fit.egork.ui.menu.file.Open;
-import ru.nsu.fit.egork.ui.menu.file.Save;
-import ru.nsu.fit.egork.ui.menu.file.SaveAs;
+
+import ru.nsu.fit.g20204.kuznetsov.ui.menu.file.*;
 
 import javax.swing.*;
 

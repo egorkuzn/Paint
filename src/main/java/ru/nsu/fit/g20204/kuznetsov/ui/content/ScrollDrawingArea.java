@@ -1,4 +1,4 @@
-package ru.nsu.fit.egork.ui.content;
+package ru.nsu.fit.g20204.kuznetsov.ui.content;
 
 import javax.swing.*;
 import java.awt.*;

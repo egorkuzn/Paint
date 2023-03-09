@@ -1,12 +1,8 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.tools;
 
 
-import ru.nsu.fit.egork.ui.content.Content;
-import ru.nsu.fit.egork.ui.content.ToolBar;
-import ru.nsu.fit.egork.ui.content.buttons.instruments.ColorChooseButton;
-import ru.nsu.fit.egork.ui.content.buttons.instruments.EraserButton;
-import ru.nsu.fit.egork.ui.content.buttons.instruments.FillerButton;
-import ru.nsu.fit.egork.ui.content.buttons.instruments.LineButton;
+import ru.nsu.fit.g20204.kuznetsov.ui.content.ToolBar;
+import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.instruments.*;
 
 import javax.swing.*;
 

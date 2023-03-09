@@ -1,10 +1,8 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.textfields;
 
-import ru.nsu.fit.egork.Hand;
-import ru.nsu.fit.egork.History;
 
-import java.awt.event.InputMethodEvent;
-import java.awt.event.InputMethodListener;
+import ru.nsu.fit.g20204.kuznetsov.Hand;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 

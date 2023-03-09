@@ -1,7 +1,6 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.menu.view;
 
-import ru.nsu.fit.egork.History;
-import ru.nsu.fit.egork.ui.content.DrawingArea;
+import ru.nsu.fit.g20204.kuznetsov.History;
 
 import javax.swing.*;
 import java.awt.*;

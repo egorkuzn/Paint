@@ -1,13 +1,13 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.menu.file;
 
-import ru.nsu.fit.egork.History;
-import ru.nsu.fit.egork.ui.MainFrame;
+
+import ru.nsu.fit.g20204.kuznetsov.History;
+import ru.nsu.fit.g20204.kuznetsov.ui.MainFrame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;

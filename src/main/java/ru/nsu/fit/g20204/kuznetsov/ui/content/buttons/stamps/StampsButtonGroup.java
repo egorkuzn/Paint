@@ -1,7 +1,9 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.stamps;
 
-import ru.nsu.fit.egork.instruments.StampType;
-import ru.nsu.fit.egork.ui.content.ToolBar;
+
+
+import ru.nsu.fit.g20204.kuznetsov.instruments.StampType;
+import ru.nsu.fit.g20204.kuznetsov.ui.content.ToolBar;
 
 import javax.swing.*;
 

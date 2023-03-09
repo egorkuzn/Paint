@@ -1,6 +1,6 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.menu;
 
-import ru.nsu.fit.egork.History;
+import ru.nsu.fit.g20204.kuznetsov.History;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

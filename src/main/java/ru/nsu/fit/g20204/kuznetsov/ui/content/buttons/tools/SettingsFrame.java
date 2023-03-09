@@ -1,13 +1,7 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.tools;
 
-import ru.nsu.fit.egork.ui.content.buttons.sliders.PolygonTopsSlider;
-import ru.nsu.fit.egork.ui.content.buttons.sliders.RadiusChooseSlider;
-import ru.nsu.fit.egork.ui.content.buttons.sliders.RotationChooseSlider;
-import ru.nsu.fit.egork.ui.content.buttons.sliders.WidthChooseSlider;
-import ru.nsu.fit.egork.ui.content.buttons.textfields.PolygonTopsTextField;
-import ru.nsu.fit.egork.ui.content.buttons.textfields.RadiusTextField;
-import ru.nsu.fit.egork.ui.content.buttons.textfields.RotationTextField;
-import ru.nsu.fit.egork.ui.content.buttons.textfields.WidthTextField;
+import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.sliders.*;
+import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.textfields.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

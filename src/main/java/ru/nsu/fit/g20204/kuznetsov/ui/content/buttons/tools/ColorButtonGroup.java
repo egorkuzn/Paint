@@ -1,7 +1,7 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.tools;
 
-import ru.nsu.fit.egork.ui.content.ToolBar;
-import ru.nsu.fit.egork.ui.content.buttons.colors.ColorButton;
+import ru.nsu.fit.g20204.kuznetsov.ui.content.ToolBar;
+import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.colors.ColorButton;
 
 import javax.swing.*;
 import java.util.ArrayList;
