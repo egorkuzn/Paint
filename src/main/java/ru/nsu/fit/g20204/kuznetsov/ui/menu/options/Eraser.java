@@ -1,10 +1,9 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.menu.options;
 
-import ru.nsu.fit.egork.ui.content.buttons.instruments.EraserButton;
-import ru.nsu.fit.egork.ui.content.buttons.instruments.LineButton;
+
+import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.instruments.EraserButton;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.logging.Logger;
