@@ -1,4 +1,4 @@
-package ru.nsu.fit.g20204.kuznetsov.ui.menu;
+package ru.nsu.fit.g20204.kuznetsov.ui.menu.view;
 
 import ru.nsu.fit.g20204.kuznetsov.ui.menu.view.ClearAll;
 

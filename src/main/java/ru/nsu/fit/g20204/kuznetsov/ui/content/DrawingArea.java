@@ -33,6 +33,12 @@ public class DrawingArea extends JPanel {
         return drawingArea;
     }
 
+    /**
+     * <code>paintComponent</code> draws last saved image
+     * on the board and adds 2d graphics
+     * @param g the <code>Graphics</code> object that
+     * allows to visualise 2d primitives.
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -58,6 +64,11 @@ public class DrawingArea extends JPanel {
 
     private void setMouseListener() {
         addMouseListener(new MouseAdapter() {
+            /**
+             * When you want catch the start of mouse pressing.
+             * Use <code>.beginControl()</code> method for your
+             * controller
+             */
             @Override
             public void mousePressed(MouseEvent e) {
                 switch (Hand.getInstrument()) {
@@ -69,6 +80,11 @@ public class DrawingArea extends JPanel {
                 }
             }
 
+            /**
+             * When you want catch the finish of mouse pressing.
+             * Use <code>.finishControl()</code> method for your
+             * controller
+             */
             @Override
             public void mouseReleased(MouseEvent e) {
                 switch (Hand.getInstrument()) {
@@ -82,6 +98,11 @@ public class DrawingArea extends JPanel {
         });
 
         addMouseMotionListener(new MouseMotionAdapter() {
+            /**
+             * When you want catch the mouse in motion.
+             * Use <code>.mediumControl()</code> method for your
+             * controller
+             */
             @Override
             public void mouseDragged(MouseEvent e) {
                 switch (Hand.getInstrument()) {
@@ -98,6 +119,11 @@ public class DrawingArea extends JPanel {
         });
     }
 
+    /**
+     * Use this method to take screen snapshot.
+     * After this method, board will be saved in <code>History</code>
+     * and user can make undo action
+     */
     public static void takeSnapshot() {
         BufferedImage img = new BufferedImage(getInstance().getWidth(), DrawingArea.getInstance().getHeight(), TYPE_INT_RGB);
         getInstance().print(img.getGraphics());

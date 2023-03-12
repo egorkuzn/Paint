@@ -10,7 +10,6 @@ public class Content extends JPanel {
         super(new BorderLayout());
         add(ScrollDrawingArea.getInstance(), BorderLayout.CENTER);
         add(new ToolBar(), BorderLayout.NORTH);
-
     }
 
     public static Content getInstance() {

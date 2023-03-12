@@ -1,8 +1,8 @@
 package ru.nsu.fit.g20204.kuznetsov;
 
 import ru.nsu.fit.g20204.kuznetsov.ui.content.DrawingArea;
-import ru.nsu.fit.g20204.kuznetsov.ui.menu.Redo;
-import ru.nsu.fit.g20204.kuznetsov.ui.menu.Undo;
+import ru.nsu.fit.g20204.kuznetsov.ui.menu.undoredo.Redo;
+import ru.nsu.fit.g20204.kuznetsov.ui.menu.undoredo.Undo;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

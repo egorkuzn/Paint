@@ -8,14 +8,23 @@ import ru.nsu.fit.g20204.kuznetsov.ui.buttons.settings.SettingsButton;
 
 import javax.swing.*;
 
+/**
+ * Class for visualisation instruments on toolbar.
+ */
 public class ToolBar extends JToolBar {
     InstrumentsButtonGroup instrumentsButtonGroup = new InstrumentsButtonGroup();
     StampsButtonGroup stampsButtonGroup = new StampsButtonGroup();
     ColorButtonGroup colorButtonGroup = new ColorButtonGroup();
 
+    /**
+     * Needed for <code>ToolButton</code> contractor
+     */
     int bWidth = 30;
     int bHeight = 30;
 
+    /**
+     * Add new buttons group here. And don't forget about separator.
+     */
     public ToolBar() {
         super("Instruments");
         add(new FileManagerButton(bWidth, bHeight));

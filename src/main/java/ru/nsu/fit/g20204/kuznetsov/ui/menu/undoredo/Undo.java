@@ -1,4 +1,4 @@
-package ru.nsu.fit.g20204.kuznetsov.ui.menu;
+package ru.nsu.fit.g20204.kuznetsov.ui.menu.undoredo;
 
 import ru.nsu.fit.g20204.kuznetsov.History;
 
@@ -11,35 +11,36 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Logger;
 
-public class Redo extends JMenuItem {
-    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+public class Undo extends JMenuItem {
+    private static Undo undo = null;
     private static int number = 0;
-    private static Redo redo = null;
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
-    private Redo() {
+    private Undo() {
         super();
         setIcon();
-
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
                 if (number == 1) {
-                    History.toNextScreen();
+                    logger.info("Undo released");
+                    History.turnToLastScreen();
+                    Redo.getInstance().activateRedo();
                 }
             }
         });
     }
 
-    public static Redo getInstance() {
-        if (redo == null) {
-            redo = new Redo();
+    public static Undo getInstance() {
+        if (undo == null) {
+            undo = new Undo();
         }
 
-        return redo;
+        return undo;
     }
 
     private void setIcon() {
-        InputStream stream = getClass().getClassLoader().getResourceAsStream("arrows/redo" + number + ".png");
+        InputStream stream = getClass().getClassLoader().getResourceAsStream("arrows/undo" + number +".png");
 
         try {
             var img = ImageIO.read(stream);
@@ -53,12 +54,12 @@ public class Redo extends JMenuItem {
         setMinimumSize(new Dimension(30, 30));
     }
 
-    public void activateRedo() {
+    public void activateUndo() {
         number = 1;
         setIcon();
     }
 
-    public void deactivateRedo() {
+    public void deactivateUndo() {
         number = 0;
         setIcon();
     }

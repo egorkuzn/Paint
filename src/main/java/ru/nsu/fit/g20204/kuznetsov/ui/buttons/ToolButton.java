@@ -19,6 +19,15 @@ public class ToolButton extends JButton {
     private ToolButton toolButton = this;
     private static final HashMap<ToolButton, Boolean> pressedButtonsControl = new HashMap<>();
 
+    /**
+     * Contractor for instruments that need mouse control on drawing area like pen and line
+     *
+     * @param width
+     * @param height
+     * @param imagePath path to the image from <code>resources</code> dir
+     * @param tip for showing some text on mouse cover
+     * @param instrument
+     */
     public ToolButton(int width,
                       int height,
                       String imagePath,
@@ -61,6 +70,15 @@ public class ToolButton extends JButton {
         setSelected(false);
     }
 
+    /**
+     * Similar as upper but for filters, <code>ColorChooseButton</code>, <code>FileManagerButton</code>,
+     * <code>SettingsButton</code>.
+     *
+     * @param width
+     * @param height
+     * @param imagePath
+     * @param tip
+     */
     public ToolButton(int width,
                       int height,
                       String imagePath,

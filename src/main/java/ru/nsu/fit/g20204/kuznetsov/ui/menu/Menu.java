@@ -1,5 +1,12 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.menu;
 
+import ru.nsu.fit.g20204.kuznetsov.ui.menu.file.File;
+import ru.nsu.fit.g20204.kuznetsov.ui.menu.help.Help;
+import ru.nsu.fit.g20204.kuznetsov.ui.menu.options.Options;
+import ru.nsu.fit.g20204.kuznetsov.ui.menu.undoredo.Redo;
+import ru.nsu.fit.g20204.kuznetsov.ui.menu.undoredo.Undo;
+import ru.nsu.fit.g20204.kuznetsov.ui.menu.view.View;
+
 import javax.swing.*;
 
 public class Menu {
