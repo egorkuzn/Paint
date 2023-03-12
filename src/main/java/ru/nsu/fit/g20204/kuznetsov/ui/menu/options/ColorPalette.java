@@ -1,6 +1,6 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.menu.options;
 
-import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.instruments.ColorChooseButton;
+import ru.nsu.fit.g20204.kuznetsov.ui.buttons.instruments.ColorChooseButton;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;

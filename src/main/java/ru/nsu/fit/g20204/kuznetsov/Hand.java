@@ -2,8 +2,8 @@ package ru.nsu.fit.g20204.kuznetsov;
 
 import ru.nsu.fit.g20204.kuznetsov.instruments.InstrumentType;
 import ru.nsu.fit.g20204.kuznetsov.instruments.StampType;
-import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.sliders.*;
-import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.textfields.*;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.sliders.*;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.textfields.*;
 
 import java.awt.*;
 

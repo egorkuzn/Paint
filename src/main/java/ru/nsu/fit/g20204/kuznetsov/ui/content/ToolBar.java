@@ -1,7 +1,10 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.content;
 
-import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.stamps.*;
-import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.tools.*;
+import ru.nsu.fit.g20204.kuznetsov.ui.buttons.stamps.StampsButtonGroup;
+import ru.nsu.fit.g20204.kuznetsov.ui.buttons.colors.ColorButtonGroup;
+import ru.nsu.fit.g20204.kuznetsov.ui.buttons.filemanager.FileManagerButton;
+import ru.nsu.fit.g20204.kuznetsov.ui.buttons.instruments.InstrumentsButtonGroup;
+import ru.nsu.fit.g20204.kuznetsov.ui.buttons.settings.SettingsButton;
 
 import javax.swing.*;
 

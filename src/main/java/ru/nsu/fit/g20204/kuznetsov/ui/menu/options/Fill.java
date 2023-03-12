@@ -1,7 +1,7 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.menu.options;
 
 
-import ru.nsu.fit.g20204.kuznetsov.ui.content.buttons.instruments.FillerButton;
+import ru.nsu.fit.g20204.kuznetsov.ui.buttons.instruments.FillerButton;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
