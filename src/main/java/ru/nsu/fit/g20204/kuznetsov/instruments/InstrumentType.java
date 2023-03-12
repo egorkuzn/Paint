@@ -5,5 +5,6 @@ public enum InstrumentType {
     LINE,
     FILLER,
     ERASER,
-    STAMP
+    STAMP,
+    FILTER
 }

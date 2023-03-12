@@ -5,7 +5,7 @@ This is the place where all toolbar buttons are.
 
 ## Content
 
-There is **_DrawingArea_** class, that manage all instruments.
+There is **_DrawingArea_** class, that manage all instruments and **_ToolBar_**.
 
 ## Menu
 

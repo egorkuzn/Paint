@@ -1,5 +1,6 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.content;
 
+import ru.nsu.fit.g20204.kuznetsov.ui.buttons.filters.FiltersButtonGroup;
 import ru.nsu.fit.g20204.kuznetsov.ui.buttons.stamps.StampsButtonGroup;
 import ru.nsu.fit.g20204.kuznetsov.ui.buttons.colors.ColorButtonGroup;
 import ru.nsu.fit.g20204.kuznetsov.ui.buttons.filemanager.FileManagerButton;
@@ -15,6 +16,7 @@ public class ToolBar extends JToolBar {
     InstrumentsButtonGroup instrumentsButtonGroup = new InstrumentsButtonGroup();
     StampsButtonGroup stampsButtonGroup = new StampsButtonGroup();
     ColorButtonGroup colorButtonGroup = new ColorButtonGroup();
+    FiltersButtonGroup filtersButtonGroup = new FiltersButtonGroup();
 
     /**
      * Needed for <code>ToolButton</code> contractor
@@ -36,5 +38,7 @@ public class ToolBar extends JToolBar {
         stampsButtonGroup.set(this, bWidth, bHeight);
         addSeparator();
         colorButtonGroup.set(this, bWidth, bHeight);
+        addSeparator();
+        filtersButtonGroup.set(this, bWidth, bHeight);
     }
 }

@@ -59,6 +59,9 @@ public class DrawingArea extends JPanel {
             case ERASER -> EraserController.paint(g);
             case FILLER -> FillerController.paint(g);
             case PENCIL -> PencilController.paint(g);
+            default -> {
+            }
+            // TODO: case FILTER ->
         }
     }
 
@@ -77,6 +80,9 @@ public class DrawingArea extends JPanel {
                     case ERASER -> EraserController.beginControl(e.getPoint());
                     case FILLER -> FillerController.beginControl(e.getPoint());
                     case PENCIL -> PencilController.beginControl(e.getPoint());
+                    default -> {
+                    }
+                    // TODO: case FILTER ->
                 }
             }
 
@@ -93,6 +99,9 @@ public class DrawingArea extends JPanel {
                     case ERASER -> EraserController.finishControl(e.getPoint());
                     case FILLER -> FillerController.finishControl();
                     case PENCIL -> PencilController.finishControl(e.getPoint());
+                    default -> {
+                    }
+                    // TODO: case FILTER ->
                 }
             }
         });
@@ -114,6 +123,9 @@ public class DrawingArea extends JPanel {
                     case ERASER -> EraserController.mediumControl(e.getPoint());
                     case FILLER -> FillerController.mediumControl();
                     case PENCIL -> PencilController.mediumControl(e.getPoint());
+                    default -> {
+                    }
+                    // TODO: case FILTER ->
                 }
             }
         });

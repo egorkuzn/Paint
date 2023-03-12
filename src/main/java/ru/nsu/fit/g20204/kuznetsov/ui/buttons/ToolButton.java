@@ -71,7 +71,7 @@ public class ToolButton extends JButton {
     }
 
     /**
-     * Similar as upper but for filters, <code>ColorChooseButton</code>, <code>FileManagerButton</code>,
+     * Similar as upper but for <code>ColorChooseButton</code>, <code>FileManagerButton</code>,
      * <code>SettingsButton</code>.
      *
      * @param width
