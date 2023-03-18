@@ -7,17 +7,15 @@ import ru.nsu.fit.g20204.kuznetsov.ui.buttons.ToolButton;
 public class FillerButton extends ToolButton {
     private static FillerButton fillerButton = null;
 
-    private FillerButton(int width, int height) {
-        super(width,
-                height,
-                "instruments/fill.png",
+    private FillerButton() {
+        super("instruments/fill.png",
                 "Fill",
                 InstrumentType.FILLER);
     }
 
-    public static FillerButton getInstance(int width, int height) {
+    public static FillerButton getInstance() {
         if (fillerButton == null) {
-            fillerButton = new FillerButton(width, height);
+            fillerButton = new FillerButton();
         }
 
         return fillerButton;

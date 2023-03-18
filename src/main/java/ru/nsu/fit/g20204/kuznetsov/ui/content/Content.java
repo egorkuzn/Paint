@@ -1,5 +1,7 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.content;
 
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.SettingsFrame;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,7 +10,11 @@ public class Content extends JPanel {
 
     private Content() {
         super(new BorderLayout());
-        add(ScrollDrawingArea.getInstance(), BorderLayout.CENTER);
+
+        var splitPaneV = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, SettingsFrame.getInstance(), ScrollDrawingArea.getInstance());
+        splitPaneV.setResizeWeight(1);
+
+        add(splitPaneV, BorderLayout.CENTER);
         add(new ToolBar(), BorderLayout.NORTH);
     }
 

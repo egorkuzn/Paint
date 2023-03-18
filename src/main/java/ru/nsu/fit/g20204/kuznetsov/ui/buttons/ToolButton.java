@@ -15,6 +15,11 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 public class ToolButton extends JButton {
+    final private int width = 30;
+    final private int height = 30;
+
+    private final String name;
+
     protected Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private ToolButton toolButton = this;
     private static final HashMap<ToolButton, Boolean> pressedButtonsControl = new HashMap<>();
@@ -22,19 +27,16 @@ public class ToolButton extends JButton {
     /**
      * Contractor for instruments that need mouse control on drawing area like pen and line
      *
-     * @param width
-     * @param height
      * @param imagePath path to the image from <code>resources</code> dir
      * @param tip for showing some text on mouse cover
      * @param instrument
      */
-    public ToolButton(int width,
-                      int height,
-                      String imagePath,
+    public ToolButton(String imagePath,
                       String tip,
                       InstrumentType instrument) {
+        name = tip;
         setFocusPainted(false);
-        init(width, height, imagePath, tip);
+        init(imagePath, tip);
         pressedButtonsControl.put(this, false);
 
         addActionListener(action -> {
@@ -46,23 +48,18 @@ public class ToolButton extends JButton {
                 }
             }
 
-
-            boolean isPressed = !pressedButtonsControl.get(toolButton);
-            setSelected(isPressed);
-
-            if (isPressed) {
-                logger.info(tip.toUpperCase() + " chosen");
-                Hand.take(instrument);
-
-                if (instrument == InstrumentType.STAMP) {
-                    Hand.setStampType(StampType.valueOf(tip));
-                }
-            } else {
-                logger.info("PENCIL chosen");
-                Hand.take(InstrumentType.PENCIL);
+            if (!pressedButtonsControl.get(toolButton)) {
+                setSelected(true);
             }
 
-            pressedButtonsControl.put(toolButton, isPressed);
+            logger.info(tip.toUpperCase() + " chosen");
+            Hand.take(instrument);
+
+            if (instrument == InstrumentType.STAMP) {
+                Hand.setStampType(StampType.valueOf(tip));
+            }
+
+            pressedButtonsControl.put(toolButton, true);
         });
     }
 
@@ -74,22 +71,17 @@ public class ToolButton extends JButton {
      * Similar as upper but for <code>ColorChooseButton</code>, <code>FileManagerButton</code>,
      * <code>SettingsButton</code>.
      *
-     * @param width
-     * @param height
      * @param imagePath
      * @param tip
      */
-    public ToolButton(int width,
-                      int height,
-                      String imagePath,
+    public ToolButton(String imagePath,
                       String tip) {
+        name = tip;
         setFocusPainted(false);
-        init(width, height, imagePath, tip);
+        init(imagePath, tip);
     }
 
-    private void init(int width,
-                      int height,
-                      String imagePath,
+    private void init(String imagePath,
                       String tip) {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(imagePath);
 
@@ -103,5 +95,9 @@ public class ToolButton extends JButton {
 
         setToolTipText(tip.toUpperCase());
         setMaximumSize(new Dimension(width, height));
+    }
+
+    public String getName() {
+        return name;
     }
 }

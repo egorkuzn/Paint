@@ -9,14 +9,14 @@ import java.util.ArrayList;
 public class ColorButtonGroup extends ButtonGroup {
     private static final ArrayList<ColorButton> colorButtons = new ArrayList<>();
 
-    public void set(ToolBar toolBar, int bWidth, int bHeight) {
-        initButtons(bWidth, bHeight);
+    public void set(ToolBar toolBar) {
+        initButtons();
         setOnPaneAll(toolBar);
     }
 
-    private void initButtons(int bWidth, int bHeight) {
+    private void initButtons() {
         for (int i = 0; i < 7; i++) {
-            ColorButton colorButton = new ColorButton(bWidth, bHeight);
+            ColorButton colorButton = new ColorButton();
             add(colorButton);
             colorButtons.add(colorButton);
         }

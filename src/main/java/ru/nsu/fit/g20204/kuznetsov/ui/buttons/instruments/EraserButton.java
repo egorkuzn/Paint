@@ -11,17 +11,15 @@ public class EraserButton extends ToolButton {
 
     private static EraserButton eraserButton = null;
 
-    public EraserButton(int width, int height) {
-        super(width,
-                height,
-                "instruments/eraser.png",
+    public EraserButton() {
+        super("instruments/eraser.png",
                 "Eraser",
                 InstrumentType.ERASER);
     }
 
-    public static EraserButton getInstance(int width, int height) {
+    public static EraserButton getInstance() {
         if (eraserButton == null) {
-            eraserButton = new EraserButton(width, height);
+            eraserButton = new EraserButton();
         }
 
         return eraserButton;

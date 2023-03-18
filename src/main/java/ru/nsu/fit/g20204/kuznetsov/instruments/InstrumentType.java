@@ -6,5 +6,6 @@ public enum InstrumentType {
     FILLER,
     ERASER,
     STAMP,
-    FILTER
+    FILTER,
+    HAND
 }

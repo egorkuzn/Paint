@@ -18,27 +18,22 @@ public class ToolBar extends JToolBar {
     ColorButtonGroup colorButtonGroup = new ColorButtonGroup();
     FiltersButtonGroup filtersButtonGroup = new FiltersButtonGroup();
 
-    /**
-     * Needed for <code>ToolButton</code> contractor
-     */
-    int bWidth = 30;
-    int bHeight = 30;
 
     /**
      * Add new buttons group here. And don't forget about separator.
      */
     public ToolBar() {
         super("Instruments");
-        add(new FileManagerButton(bWidth, bHeight));
+        add(new FileManagerButton());
         addSeparator();
-        add(new SettingsButton(bWidth, bHeight));
+        add(new SettingsButton());
         addSeparator();
-        instrumentsButtonGroup.set(this, bWidth, bHeight);
+        instrumentsButtonGroup.set(this);
         addSeparator();
-        stampsButtonGroup.set(this, bWidth, bHeight);
+        stampsButtonGroup.set(this);
         addSeparator();
-        colorButtonGroup.set(this, bWidth, bHeight);
+        colorButtonGroup.set(this);
         addSeparator();
-        filtersButtonGroup.set(this, bWidth, bHeight);
+        filtersButtonGroup.set(this);
     }
 }

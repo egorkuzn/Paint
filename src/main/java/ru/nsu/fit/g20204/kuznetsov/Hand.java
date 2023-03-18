@@ -2,6 +2,7 @@ package ru.nsu.fit.g20204.kuznetsov;
 
 import ru.nsu.fit.g20204.kuznetsov.instruments.InstrumentType;
 import ru.nsu.fit.g20204.kuznetsov.instruments.StampType;
+import ru.nsu.fit.g20204.kuznetsov.ui.buttons.instruments.HandButton;
 import ru.nsu.fit.g20204.kuznetsov.ui.settings.sliders.*;
 import ru.nsu.fit.g20204.kuznetsov.ui.settings.textfields.*;
 
@@ -9,13 +10,13 @@ import java.awt.*;
 
 public class Hand {
     private static Hand hand = null;
-    private static InstrumentType instrument = InstrumentType.PENCIL;
+    private static InstrumentType instrument = InstrumentType.HAND;
     private static Color color = Color.BLACK;
     private static int width = 10;
     private static int angle = 0;
     private static int topsCount = 5;
     private static int radiusValue = 200;
-    private static StampType stampType = StampType.POLYGON;
+    private static StampType stampType = StampType.Polygon;
 
     private Hand() {}
 

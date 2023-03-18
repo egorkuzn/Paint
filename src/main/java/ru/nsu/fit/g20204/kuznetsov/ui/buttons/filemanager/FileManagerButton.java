@@ -12,10 +12,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class FileManagerButton extends ToolButton {
-    public FileManagerButton(int width, int height) {
-        super(width,
-                height,
-                "tools/files.png",
+    public FileManagerButton() {
+        super("tools/files.png",
                 "Open new file");
 
         addMouseListener(new MouseAdapter() {

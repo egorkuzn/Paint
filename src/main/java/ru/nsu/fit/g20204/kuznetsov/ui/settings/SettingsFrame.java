@@ -1,21 +1,23 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.settings;
 
-import ru.nsu.fit.g20204.kuznetsov.ui.settings.sliders.*;
-import ru.nsu.fit.g20204.kuznetsov.ui.settings.textfields.*;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.sliders.PolygonTopsSlider;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.sliders.RadiusChooseSlider;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.sliders.RotationChooseSlider;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.sliders.WidthChooseSlider;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.textfields.PolygonTopsTextField;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.textfields.RadiusTextField;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.textfields.RotationTextField;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.textfields.WidthTextField;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.logging.Logger;
 
-public class SettingsFrame extends JFrame {
+public class SettingsFrame extends JLabel {
     private static SettingsFrame settingsFrame = null;
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     private SettingsFrame() {
-        super("Settings");
         defaultSet();
         controllersSet();
         setLayout(null);
@@ -33,23 +35,9 @@ public class SettingsFrame extends JFrame {
 
     void defaultSet() {
         setMinimumSize(new Dimension(380, 260));
-        setResizable(false);
+        setSize(new Dimension(380, 260));
+        setPreferredSize(new Dimension(380, 260));
         setLocation(100, 100);
-        setIcon();
-    }
-
-    void setIcon() {
-        InputStream stream = getClass().getClassLoader().getResourceAsStream("icon.png");
-
-        try {
-            if(stream != null) {
-                setIconImage(new ImageIcon(ImageIO.read(stream)).getImage());
-            } else {
-                logger.warning("Bad resource path");
-            }
-        } catch (IllegalArgumentException | IOException e) {
-            logger.warning("Cannot read image source");
-        }
     }
 
     private void controllersSet() {

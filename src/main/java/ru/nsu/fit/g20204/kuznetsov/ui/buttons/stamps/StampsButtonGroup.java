@@ -11,15 +11,15 @@ public class StampsButtonGroup extends ButtonGroup {
     static private PolygonButton polygon;
     static private StarButton star;
 
-    public void set(ToolBar toolBar, int width, int height) {
-        initButtons(width, height);
+    public void set(ToolBar toolBar) {
+        initButtons();
         addInGroupAll();
         setOnPanelAll(toolBar);
     }
 
-    void initButtons(int width, int height) {
-        polygon = new PolygonButton(width, height);
-        star = new StarButton(width, height);
+    void initButtons() {
+        polygon = new PolygonButton();
+        star = new StarButton();
     }
 
     void addInGroupAll() {
@@ -34,8 +34,8 @@ public class StampsButtonGroup extends ButtonGroup {
 
     public static void doClick(StampType type) {
         switch (type) {
-            case STAR -> star.doClick();
-            case POLYGON -> polygon.doClick();
+            case Star -> star.doClick();
+            case Polygon -> polygon.doClick();
         }
     }
 }

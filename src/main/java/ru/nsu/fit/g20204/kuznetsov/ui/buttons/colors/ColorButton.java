@@ -17,13 +17,13 @@ public class ColorButton extends JButton {
             Color.WHITE};
     static byte pointer = 0;
 
-    public ColorButton(int width, int height) {
+    public ColorButton() {
         super();
         setBackground(colorArray[pointer++]);
         setContentAreaFilled(true);
-        setSize(new Dimension(width, height));
-        setMinimumSize(new Dimension(width,height));
-        setMaximumSize(new Dimension(width, height));
+        setSize(new Dimension());
+        setMinimumSize(new Dimension());
+        setMaximumSize(new Dimension());
         setEnabled(false);
         setBorder(BorderFactory.createLoweredBevelBorder());
 

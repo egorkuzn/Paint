@@ -11,10 +11,8 @@ public class ColorChooseButton extends ToolButton {
     static Palette colorChooser = null;
     private static ColorChooseButton colorChooseButton = null;
 
-    private ColorChooseButton(int width, int height) {
-        super(width,
-                height,
-                "instruments/palette.png",
+    private ColorChooseButton() {
+        super("instruments/palette.png",
                 "Color palette");
         addActionListener(new ActionListener() {
             @Override
@@ -38,9 +36,9 @@ public class ColorChooseButton extends ToolButton {
         });
     }
 
-    public static ColorChooseButton getInstance(int width, int height) {
+    public static ColorChooseButton getInstance() {
         if (colorChooseButton == null) {
-            colorChooseButton = new ColorChooseButton(width, height);
+            colorChooseButton = new ColorChooseButton();
         }
 
         return colorChooseButton;

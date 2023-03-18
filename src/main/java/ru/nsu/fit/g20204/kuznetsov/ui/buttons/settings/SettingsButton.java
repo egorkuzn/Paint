@@ -7,8 +7,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class SettingsButton extends ToolButton {
-    public SettingsButton(int width, int height) {
-        super(width, height, "tools/settings.png", "Settings");
+    public SettingsButton() {
+        super("tools/settings.png", "Settings");
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
