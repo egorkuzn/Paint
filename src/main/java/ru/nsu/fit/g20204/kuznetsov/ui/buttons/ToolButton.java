@@ -5,6 +5,7 @@ import ru.nsu.fit.g20204.kuznetsov.Hand;
 import ru.nsu.fit.g20204.kuznetsov.instruments.InstrumentType;
 import ru.nsu.fit.g20204.kuznetsov.instruments.StampType;
 import ru.nsu.fit.g20204.kuznetsov.ui.settings.SettingsLabel;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.SettingsManager;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -45,7 +46,7 @@ public abstract class ToolButton extends JButton {
             chosenViewUpdate(instrument, tip);
 
             if (instrument.isSettable()) {
-                settingsLableUpdate();
+                settingsLabelUpdate(instrument);
             } else {
                 SettingsLabel.getInstance().setVisible(false);
             }
@@ -54,7 +55,9 @@ public abstract class ToolButton extends JButton {
         });
     }
 
-    private void settingsLableUpdate() {
+    private void settingsLabelUpdate(InstrumentType instrument) {
+        SettingsManager.set(instrument);
+
         if (!pressedButtonsControl.get(toolButton)) {
             SettingsLabel.getInstance().setVisible(false);
         } else {

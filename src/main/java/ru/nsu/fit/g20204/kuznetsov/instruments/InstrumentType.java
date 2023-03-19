@@ -10,6 +10,6 @@ public enum InstrumentType {
     HAND;
 
     public boolean isSettable() {
-        return this != InstrumentType.HAND;
+        return !(this == HAND || this == FILLER);
     }
 }
