@@ -97,17 +97,4 @@ public class Hand {
     public static FilterType getFilterType() {
         return filterType;
     }
-
-    public static int yDimension() {
-        return y;
-    }
-
-    public static int xDimension() {
-        return x;
-    }
-
-    public static void setDimension(Point point) {
-        y = point.y;
-        x = point.x;
-    }
 }

@@ -1,37 +1,24 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.content;
 
+import ru.nsu.fit.g20204.kuznetsov.Hand;
+import ru.nsu.fit.g20204.kuznetsov.instruments.InstrumentType;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.logging.Logger;
 
 public class ScrollDrawingArea extends JScrollPane {
     private static ScrollDrawingArea scrollDrawingArea = null;
-    private static boolean scrollStatus = false;
-    private static Point origin;
+
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     private ScrollDrawingArea() {
         super(DrawingArea.getInstance());
         setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_AS_NEEDED);
         setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-
-        addMouseMotionListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                origin = e.getPoint();
-            }
-
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                int deltaX = origin.x - e.getX();
-                int deltaY = origin.y - e.getY();
-                var view = getVisibleRect();
-                view.x += deltaX;
-                view.y += deltaY;
-                scrollRectToVisible(view);
-            }
-        });
+        setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
     }
 
     public static ScrollDrawingArea getInstance() {
@@ -42,11 +29,14 @@ public class ScrollDrawingArea extends JScrollPane {
         return scrollDrawingArea;
     }
 
-    public void enableDraggingScroll() {
-        scrollStatus = true;
+    public void onDragged(Point coordinate, Point beginPoint) {
+        getVerticalScrollBar().setValue(getVerticalScrollBar().getValue() + (- coordinate.y + beginPoint.y) / 20);
+        getHorizontalScrollBar().setValue(getHorizontalScrollBar().getValue() + (- coordinate.x + beginPoint.x) / 20);
+        logger.info("move");
     }
 
-    public void disableDraggingScroll() {
-        scrollStatus = false;
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
     }
 }

@@ -110,8 +110,8 @@ public abstract class ToolButton extends JButton {
                       String tip) {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(imagePath);
 
-        int width = 30;
-        int height = 30;
+        int width = 25;
+        int height = 25;
 
         try {
             var img = ImageIO.read(stream);

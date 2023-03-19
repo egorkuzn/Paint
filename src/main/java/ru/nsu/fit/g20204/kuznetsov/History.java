@@ -13,8 +13,8 @@ public class History {
     private static final ArrayList<BufferedImage> screens = new ArrayList<>();
     private static String currentPath = null;
     private static int currentScreenIndex = -1;
-    private static int maxWidth = 640;
-    private static int maxHeight = 480;
+    private static int maxWidth = 500;
+    private static int maxHeight = 500;
 
     private History() {
         screens.add(new BufferedImage(1, 1, 1));

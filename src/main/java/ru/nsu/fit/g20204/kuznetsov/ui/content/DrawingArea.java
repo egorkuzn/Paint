@@ -5,10 +5,13 @@ import ru.nsu.fit.g20204.kuznetsov.History;
 import ru.nsu.fit.g20204.kuznetsov.controllers.*;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.util.logging.Logger;
 
@@ -17,11 +20,11 @@ import static java.awt.image.BufferedImage.TYPE_INT_RGB;
 public class DrawingArea extends JPanel {
     private static DrawingArea drawingArea = null;
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    private static boolean isSetBoard = true;
 
     private DrawingArea() {
         super();
         setMouseListener();
-        setBackground(Color.WHITE);
         setPreferredSize(new Dimension(History.getMaxWidth(), History.getMaxHeight()));
     }
 
@@ -44,6 +47,7 @@ public class DrawingArea extends JPanel {
         super.paintComponent(g);
 
         update();
+        dashBoardsSet();
 
         if (!History.getScreens().isEmpty()) {
             g.setColor(Color.WHITE);
@@ -57,8 +61,17 @@ public class DrawingArea extends JPanel {
             case ERASER -> EraserController.paint(g);
             case FILLER -> FillerController.paint(g);
             case PENCIL -> PencilController.paint(g);
-            case HAND -> {}
             case FILTER -> FilterController.paint(g);
+            case HAND -> HandController.paint(g);
+        }
+    }
+
+    private void dashBoardsSet() {
+        if (isSetBoard) {
+            Border empty = BorderFactory.createEmptyBorder(0, -1, -1, -1);
+            Border dashed = BorderFactory.createDashedBorder(null, 5, 5);
+            Border compound = new CompoundBorder(empty, dashed);
+            setBorder(compound);
         }
     }
 
@@ -77,8 +90,8 @@ public class DrawingArea extends JPanel {
                     case ERASER -> EraserController.beginControl(e.getPoint());
                     case FILLER -> FillerController.beginControl(e.getPoint());
                     case PENCIL -> PencilController.beginControl(e.getPoint());
-                    case HAND -> {}
                     case FILTER -> FilterController.beginControl(e.getPoint());
+                    case HAND -> HandController.beginControl(e.getPoint());
                 }
             }
 
@@ -95,8 +108,8 @@ public class DrawingArea extends JPanel {
                     case ERASER -> EraserController.finishControl(e.getPoint());
                     case FILLER -> FillerController.finishControl();
                     case PENCIL -> PencilController.finishControl(e.getPoint());
-                    case HAND -> {}
                     case FILTER -> FilterController.finishControl(e.getPoint());
+                    case HAND -> HandController.finishControl();
                 }
             }
         });
@@ -119,7 +132,7 @@ public class DrawingArea extends JPanel {
                     case FILLER -> FillerController.mediumControl();
                     case PENCIL -> PencilController.mediumControl(e.getPoint());
                     case FILTER -> FilterController.mediumControl(e.getPoint());
-                    default -> {}
+                    case HAND -> HandController.mediumControl(e.getPoint());
                 }
             }
         });
@@ -131,9 +144,12 @@ public class DrawingArea extends JPanel {
      * and user can make undo action
      */
     public static void takeSnapshot() {
+        isSetBoard = false;
+        getInstance().setBorder(BorderFactory.createEmptyBorder());
         BufferedImage img = new BufferedImage(getInstance().getWidth(), DrawingArea.getInstance().getHeight(), TYPE_INT_RGB);
         getInstance().print(img.getGraphics());
         History.saveScreen(img);
+        isSetBoard = true;
     }
 
     public void update() {
