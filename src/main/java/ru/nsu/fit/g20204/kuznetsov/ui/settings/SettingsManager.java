@@ -11,7 +11,7 @@ public class SettingsManager {
         switch (instrument) {
             case FILTER -> setFilterController();
             case STAMP -> StampSettings.set();
-            case PENCIL, ERASER -> WidthSettings.set();
+            case PENCIL, ERASER, LINE -> WidthSettings.set();
             default -> {
                 return;
             }

@@ -43,9 +43,7 @@ public class DrawingArea extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        removeAll();
-        validate();
-        repaint();
+        update();
 
         if (!History.getScreens().isEmpty()) {
             g.setColor(Color.WHITE);
@@ -59,9 +57,8 @@ public class DrawingArea extends JPanel {
             case ERASER -> EraserController.paint(g);
             case FILLER -> FillerController.paint(g);
             case PENCIL -> PencilController.paint(g);
-            default -> {
-            }
-            // TODO: case FILTER ->
+            case HAND -> {}
+            case FILTER -> FilterController.paint(g);
         }
     }
 
@@ -80,9 +77,8 @@ public class DrawingArea extends JPanel {
                     case ERASER -> EraserController.beginControl(e.getPoint());
                     case FILLER -> FillerController.beginControl(e.getPoint());
                     case PENCIL -> PencilController.beginControl(e.getPoint());
-                    default -> {
-                    }
-                    // TODO: case FILTER ->
+                    case HAND -> {}
+                    case FILTER -> FilterController.beginControl(e.getPoint());
                 }
             }
 
@@ -99,9 +95,8 @@ public class DrawingArea extends JPanel {
                     case ERASER -> EraserController.finishControl(e.getPoint());
                     case FILLER -> FillerController.finishControl();
                     case PENCIL -> PencilController.finishControl(e.getPoint());
-                    default -> {
-                    }
-                    // TODO: case FILTER ->
+                    case HAND -> {}
+                    case FILTER -> FilterController.finishControl(e.getPoint());
                 }
             }
         });
@@ -123,9 +118,8 @@ public class DrawingArea extends JPanel {
                     case ERASER -> EraserController.mediumControl(e.getPoint());
                     case FILLER -> FillerController.mediumControl();
                     case PENCIL -> PencilController.mediumControl(e.getPoint());
-                    default -> {
-                    }
-                    // TODO: case FILTER ->
+                    case FILTER -> FilterController.mediumControl(e.getPoint());
+                    default -> {}
                 }
             }
         });
@@ -140,5 +134,11 @@ public class DrawingArea extends JPanel {
         BufferedImage img = new BufferedImage(getInstance().getWidth(), DrawingArea.getInstance().getHeight(), TYPE_INT_RGB);
         getInstance().print(img.getGraphics());
         History.saveScreen(img);
+    }
+
+    public void update() {
+        removeAll();
+        validate();
+        repaint();
     }
 }

@@ -17,7 +17,8 @@ public class History {
     private static int maxHeight = 480;
 
     private History() {
-
+        screens.add(new BufferedImage(1, 1, 1));
+        currentScreenIndex++;
     }
 
     public static History getInstance() {
@@ -36,7 +37,7 @@ public class History {
     public static BufferedImage getLastScreen() {
         getInstance();
 
-        if (currentScreenIndex < 0 || currentScreenIndex >= screens.size()) {
+        if (currentScreenIndex <= 0 || currentScreenIndex >= screens.size()) {
             turnToLastScreen();
         }
 
@@ -62,12 +63,8 @@ public class History {
 
         Redo.getInstance().deactivateRedo();
         Undo.getInstance().activateUndo();
-        currentScreenIndex++;
+        ++currentScreenIndex;
         screens.add(img);
-    }
-
-    public static String getFileName() {
-        return "new_file.png";
     }
 
     public static void setPath(String path) {
@@ -101,17 +98,12 @@ public class History {
             Graphics2D g2 = (Graphics2D) buffer.getGraphics();
             g2.setColor(Color.WHITE);
             g2.fillRect(0, 0, maxWidth, maxHeight);
-
-            if(screens.isEmpty()) {
-                screens.add(buffer);
-            } else {
-                screens.set(0, buffer);
-            }
+            screens.set(0, buffer);
         }
     }
 
     public static void toNextScreen() {
-        if(currentScreenIndex + 1 < screens.size()) {
+        if (currentScreenIndex + 1 < screens.size()) {
             currentScreenIndex++;
 
             if (currentScreenIndex == screens.size() - 1) {

@@ -22,6 +22,8 @@ public class Hand {
     private static int angle = 0;
     private static int topsCount = 5;
     private static int radiusValue = 200;
+    private static int x = 0;
+    private static int y = 0;
     private static StampType stampType = StampType.Polygon;
 
     public static void take(InstrumentType newInstrument) {
@@ -94,5 +96,18 @@ public class Hand {
 
     public static FilterType getFilterType() {
         return filterType;
+    }
+
+    public static int yDimension() {
+        return y;
+    }
+
+    public static int xDimension() {
+        return x;
+    }
+
+    public static void setDimension(Point point) {
+        y = point.y;
+        x = point.x;
     }
 }
