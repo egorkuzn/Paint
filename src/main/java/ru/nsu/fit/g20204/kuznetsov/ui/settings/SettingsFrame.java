@@ -1,5 +1,6 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.settings;
 
+import ru.nsu.fit.g20204.kuznetsov.ui.MainFrame;
 import ru.nsu.fit.g20204.kuznetsov.ui.settings.sliders.PolygonTopsSlider;
 import ru.nsu.fit.g20204.kuznetsov.ui.settings.sliders.RadiusChooseSlider;
 import ru.nsu.fit.g20204.kuznetsov.ui.settings.sliders.RotationChooseSlider;
@@ -21,6 +22,8 @@ public class SettingsFrame extends JLabel {
         defaultSet();
         controllersSet();
         setLayout(null);
+
+        setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
     }
 
     public static SettingsFrame getInstance() {
@@ -92,5 +95,10 @@ public class SettingsFrame extends JLabel {
         setSize(300 + insets.left + insets.right, 125 + insets.top + insets.bottom);
     }
 
+    private boolean status = true;
 
+    public void update() {
+        setVisible(!status);
+        status = !status;
+    }
 }

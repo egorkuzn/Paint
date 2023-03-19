@@ -12,8 +12,7 @@ public class ScrollDrawingArea extends JScrollPane {
         super(DrawingArea.getInstance());
         setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_AS_NEEDED);
         setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        setPreferredSize(new Dimension(250, 145));
-        setMinimumSize(new Dimension(10, 10));
+        setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
     }
 
     public static ScrollDrawingArea getInstance() {

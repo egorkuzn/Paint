@@ -12,7 +12,7 @@ public class SettingsButton extends ToolButton {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                SettingsFrame.getInstance();
+                SettingsFrame.getInstance().update();
             }
         });
     }

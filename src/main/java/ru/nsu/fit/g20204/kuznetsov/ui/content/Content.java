@@ -11,10 +11,9 @@ public class Content extends JPanel {
     private Content() {
         super(new BorderLayout());
 
-        var splitPaneV = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, SettingsFrame.getInstance(), ScrollDrawingArea.getInstance());
-        splitPaneV.setResizeWeight(1);
+        add(SettingsFrame.getInstance(), BorderLayout.EAST);
+        add(ScrollDrawingArea.getInstance());
 
-        add(splitPaneV, BorderLayout.CENTER);
         add(new ToolBar(), BorderLayout.NORTH);
     }
 
