@@ -1,6 +1,6 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.content;
 
-import ru.nsu.fit.g20204.kuznetsov.ui.settings.SettingsFrame;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.SettingsLabel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,8 +10,7 @@ public class Content extends JPanel {
 
     private Content() {
         super(new BorderLayout());
-
-        add(SettingsFrame.getInstance(), BorderLayout.EAST);
+        add(SettingsLabel.getInstance(), BorderLayout.EAST);
         add(ScrollDrawingArea.getInstance());
 
         add(new ToolBar(), BorderLayout.NORTH);

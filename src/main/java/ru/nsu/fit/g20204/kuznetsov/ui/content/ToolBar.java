@@ -5,7 +5,6 @@ import ru.nsu.fit.g20204.kuznetsov.ui.buttons.stamps.StampsButtonGroup;
 import ru.nsu.fit.g20204.kuznetsov.ui.buttons.colors.ColorButtonGroup;
 import ru.nsu.fit.g20204.kuznetsov.ui.buttons.filemanager.FileManagerButton;
 import ru.nsu.fit.g20204.kuznetsov.ui.buttons.instruments.InstrumentsButtonGroup;
-import ru.nsu.fit.g20204.kuznetsov.ui.buttons.settings.SettingsButton;
 
 import javax.swing.*;
 
@@ -25,8 +24,6 @@ public class ToolBar extends JToolBar {
     public ToolBar() {
         super("Instruments");
         add(new FileManagerButton());
-        addSeparator();
-        add(new SettingsButton());
         addSeparator();
         instrumentsButtonGroup.set(this);
         addSeparator();

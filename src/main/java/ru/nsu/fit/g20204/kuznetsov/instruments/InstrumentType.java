@@ -7,5 +7,9 @@ public enum InstrumentType {
     ERASER,
     STAMP,
     FILTER,
-    HAND
+    HAND;
+
+    public boolean isSettable() {
+        return this != InstrumentType.HAND;
+    }
 }

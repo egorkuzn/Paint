@@ -1,12 +1,12 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.buttons.stamps;
 
 import ru.nsu.fit.g20204.kuznetsov.instruments.InstrumentType;
-import ru.nsu.fit.g20204.kuznetsov.ui.buttons.ToolButton;
+import ru.nsu.fit.g20204.kuznetsov.instruments.StampType;
 
-public class StarButton extends ToolButton {
+public class StarButton extends StampButton {
     public StarButton() {
         super("stamps/star.png",
-                "STAR",
+                StampType.Star.name(),
                 InstrumentType.STAMP);
     }
 }
