@@ -40,7 +40,7 @@ public class Hand {
 
     public static void setWidth(int newValue) {
         width = newValue;
-        WidthTextField.set(newValue);
+        WidthTextField.getInstance().set(newValue);
         WidthChooseSlider.getInstance().set(newValue);
     }
 
@@ -52,14 +52,14 @@ public class Hand {
         return angle / 180.0 * Math.PI;
     }
 
-    public static int getAngleDegreese() {
+    public static int getAngleDegrees() {
         return angle;
     }
 
     public static void setAngle(int value) {
         angle = value;
         RotationChooseSlider.getInstance().set(value);
-        RotationTextField.set(value);
+        RotationTextField.getInstance().set(value);
     }
 
     public static int getTopsCount() {
@@ -69,7 +69,7 @@ public class Hand {
     public static void setTopsCount(int value) {
         topsCount = value;
         PolygonTopsSlider.getInstance().set(value);
-        PolygonTopsTextField.set(value);
+        PolygonTopsTextField.getInstance().set(value);
     }
 
     public static int getRadius() {
@@ -79,7 +79,7 @@ public class Hand {
     public static void setRadius(int value) {
         radiusValue = value;
         RadiusChooseSlider.getInstance().set(value);
-        RadiusTextField.set(value);
+        RadiusTextField.getInstance().set(value);
     }
 
     public static void setStampType(StampType type) {

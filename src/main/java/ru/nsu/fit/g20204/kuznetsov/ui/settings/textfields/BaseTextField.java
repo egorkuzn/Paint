@@ -5,18 +5,36 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 import java.awt.*;
-import java.util.logging.Logger;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
-public class BaseTextField extends JTextField {
-    private Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+public abstract class BaseTextField extends JTextField {
 
-    public BaseTextField(int limit) {
+    public BaseTextField(int limit, int startValue) {
         setDocument(new LengthRestrictedDocument(limit));
         setFont(new Font("Consolas", Font.ITALIC, 14));
         setPreferredSize(new Dimension(30, 20));
+
+
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    int value = Integer.parseInt(getText());
+
+                    if (value > limit || value < 0) {
+                        value = limit / 4;
+                    }
+
+                    onRelease(value);
+                }
+            }
+        });
+
+        setText(String.valueOf(startValue));
     }
 
-    public final class LengthRestrictedDocument extends PlainDocument {
+    public final static class LengthRestrictedDocument extends PlainDocument {
 
         private final int limit;
 
@@ -39,5 +57,11 @@ public class BaseTextField extends JTextField {
                     super.insertString(offs, str, a);
             }
         }
+    }
+
+    protected abstract void onRelease(int value);
+
+    public void set(int value) {
+        setText(String.valueOf(value));
     }
 }
