@@ -2,14 +2,18 @@ package ru.nsu.fit.g20204.kuznetsov;
 
 import ru.nsu.fit.g20204.kuznetsov.instruments.InstrumentType;
 import ru.nsu.fit.g20204.kuznetsov.instruments.StampType;
-import ru.nsu.fit.g20204.kuznetsov.ui.buttons.instruments.HandButton;
-import ru.nsu.fit.g20204.kuznetsov.ui.settings.sliders.*;
-import ru.nsu.fit.g20204.kuznetsov.ui.settings.textfields.*;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.sliders.PolygonTopsSlider;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.sliders.RadiusChooseSlider;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.sliders.RotationChooseSlider;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.sliders.WidthChooseSlider;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.textfields.PolygonTopsTextField;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.textfields.RadiusTextField;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.textfields.RotationTextField;
+import ru.nsu.fit.g20204.kuznetsov.ui.settings.textfields.WidthTextField;
 
 import java.awt.*;
 
 public class Hand {
-    private static Hand hand = null;
     private static InstrumentType instrument = InstrumentType.HAND;
     private static Color color = Color.BLACK;
     private static int width = 10;
@@ -18,40 +22,26 @@ public class Hand {
     private static int radiusValue = 200;
     private static StampType stampType = StampType.Polygon;
 
-    private Hand() {}
-
-    public static Hand getInstance() {
-        if (hand == null) {
-            hand = new Hand();
-        }
-
-        return hand;
-    }
-
     public static void take(InstrumentType newInstrument) {
-        getInstance();
         instrument = newInstrument;
     }
 
     public static InstrumentType getInstrument() {
-        getInstance();
         return instrument;
     }
 
     public static void changeColor(Color newColor) {
-        getInstance();
         color = newColor;
     }
 
-    public static Color getColor(){
-        getInstance();
+    public static Color getColor() {
         return color;
     }
 
     public static void setWidth(int newValue) {
         width = newValue;
         WidthTextField.set(newValue);
-        WidthChooseSlider.set(newValue);
+        WidthChooseSlider.getInstance().set(newValue);
     }
 
     public static int getWidth() {
@@ -68,7 +58,7 @@ public class Hand {
 
     public static void setAngle(int value) {
         angle = value;
-        RotationChooseSlider.set(value);
+        RotationChooseSlider.getInstance().set(value);
         RotationTextField.set(value);
     }
 
@@ -78,7 +68,7 @@ public class Hand {
 
     public static void setTopsCount(int value) {
         topsCount = value;
-        PolygonTopsSlider.set(value);
+        PolygonTopsSlider.getInstance().set(value);
         PolygonTopsTextField.set(value);
     }
 
@@ -88,7 +78,7 @@ public class Hand {
 
     public static void setRadius(int value) {
         radiusValue = value;
-        RadiusChooseSlider.set(value);
+        RadiusChooseSlider.getInstance().set(value);
         RadiusTextField.set(value);
     }
 

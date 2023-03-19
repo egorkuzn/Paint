@@ -1,9 +1,6 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.content;
 
-import ru.nsu.fit.g20204.kuznetsov.ui.settings.SettingsFrame;
-
 import javax.swing.*;
-import java.awt.*;
 
 public class ScrollDrawingArea extends JScrollPane {
     private static ScrollDrawingArea scrollDrawingArea = null;
