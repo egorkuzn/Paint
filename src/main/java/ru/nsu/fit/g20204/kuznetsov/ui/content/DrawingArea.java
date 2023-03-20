@@ -5,8 +5,6 @@ import ru.nsu.fit.g20204.kuznetsov.History;
 import ru.nsu.fit.g20204.kuznetsov.controllers.*;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -25,7 +23,6 @@ public class DrawingArea extends JLabel {
         setMouseListener();
         setPreferredSize(new Dimension(History.getMaxWidth(), History.getMaxHeight()));
         setBounds(new Rectangle(History.getMaxWidth(), History.getMaxHeight()));
-        dashBoardsSet();
     }
 
     public static DrawingArea getInstance() {
@@ -64,13 +61,27 @@ public class DrawingArea extends JLabel {
             case FILTER -> FilterController.paint(g);
             case HAND -> HandController.paint(g);
         }
+
+        dashBoardSet(g);
     }
 
-    private void dashBoardsSet() {
-        Border empty = BorderFactory.createEmptyBorder(0, 0, 0, 0);
-        Border dashed = BorderFactory.createDashedBorder(null, 5, 5);
-        Border compound = new CompoundBorder(empty, dashed);
-        setBorder(compound);
+    public void dashBoardSet(Graphics g) {
+        var g2 = (Graphics2D) g;
+        // Устанавливаем толщину и стиль линии
+        float thickness = 2f; // Толщина в пикселях
+        float[] dash1 = {10.0f}; // Длина пунктира в пикселях
+        BasicStroke dashed = new BasicStroke(thickness, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, dash1, 0.0f);
+        g2.setColor(Color.BLACK);
+        g2.setStroke(dashed);
+
+        // Задаем координаты и размеры прямоугольника
+        int x = 0; // Координата x верхнего левого угла
+        int y = 0; // Координата y верхнего левого угла
+        int width = History.getMaxWidth(); // Ширина прямоугольника
+        int height = History.getMaxHeight(); // Высота прямоугольника
+
+        // Рисуем прямоугольник с помощью метода drawRect
+        g2.drawRect(x, y, width, height);
     }
 
     private void setMouseListener() {
@@ -146,7 +157,6 @@ public class DrawingArea extends JLabel {
         BufferedImage img = new BufferedImage(History.getMaxWidth(), History.getMaxHeight(), TYPE_INT_RGB);
         getInstance().print(img.getGraphics());
         History.saveScreen(img);
-        getInstance().dashBoardsSet();
     }
 
     public void update() {

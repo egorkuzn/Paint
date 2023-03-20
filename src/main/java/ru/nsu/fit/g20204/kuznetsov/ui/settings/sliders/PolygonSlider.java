@@ -6,7 +6,7 @@ public class PolygonSlider extends BaseSlider {
     private static PolygonSlider polygonTopsSlider = null;
 
     public PolygonSlider() {
-        super(1, 50, "Tops count setting: ");
+        super(3, 50, "Tops count setting: ");
     }
 
     public static PolygonSlider getInstance() {

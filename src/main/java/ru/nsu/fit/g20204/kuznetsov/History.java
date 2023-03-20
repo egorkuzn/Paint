@@ -17,8 +17,7 @@ public class History {
     private static int maxHeight = 1;
 
     private History() {
-        screens.add(new BufferedImage(1, 1, 1));
-        currentScreenIndex++;
+
     }
 
     public static History getInstance() {
@@ -90,14 +89,6 @@ public class History {
             currentScreenIndex = 0;
 
             Undo.getInstance().deactivateUndo();
-            var buffer = new BufferedImage(maxWidth,
-                    maxHeight,
-                    BufferedImage.TYPE_INT_RGB);
-
-            Graphics2D g2 = (Graphics2D) buffer.getGraphics();
-            g2.setColor(Color.WHITE);
-            g2.fillRect(0, 0, maxWidth, maxHeight);
-            screens.set(0, buffer);
         }
     }
 

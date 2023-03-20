@@ -7,7 +7,7 @@ public class PolygonTopsTextField extends BaseTextField {
     private static final int limit = 50;
 
     public PolygonTopsTextField() {
-        super(limit, Hand.getTopsCount());
+        super(3, limit, Hand.getTopsCount());
     }
 
     public static PolygonTopsTextField getInstance() {
