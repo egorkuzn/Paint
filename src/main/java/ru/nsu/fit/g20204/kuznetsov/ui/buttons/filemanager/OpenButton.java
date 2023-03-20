@@ -6,8 +6,8 @@ import ru.nsu.fit.g20204.kuznetsov.util.FileExplorer;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class FileManagerButton extends ToolButton {
-    public FileManagerButton() {
+public class OpenButton extends ToolButton {
+    public OpenButton() {
         super("tools/files.png",
                 "Open new file");
 

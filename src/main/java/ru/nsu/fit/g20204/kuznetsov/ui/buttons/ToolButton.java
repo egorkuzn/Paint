@@ -93,7 +93,7 @@ public abstract class ToolButton extends JButton {
     }
 
     /**
-     * Similar as upper but for <code>ColorChooseButton</code>, <code>FileManagerButton</code>,
+     * Similar as upper but for <code>ColorChooseButton</code>, <code>OpenButton</code>,
      * <code>SettingsButton</code>.
      *
      * @param imagePath

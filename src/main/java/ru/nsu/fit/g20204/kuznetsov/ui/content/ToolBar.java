@@ -1,9 +1,10 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.content;
 
+import ru.nsu.fit.g20204.kuznetsov.ui.buttons.filemanager.OpenButton;
+import ru.nsu.fit.g20204.kuznetsov.ui.buttons.filemanager.SaveButton;
 import ru.nsu.fit.g20204.kuznetsov.ui.buttons.filters.FiltersButtonGroup;
 import ru.nsu.fit.g20204.kuznetsov.ui.buttons.stamps.StampsButtonGroup;
 import ru.nsu.fit.g20204.kuznetsov.ui.buttons.colors.ColorButtonGroup;
-import ru.nsu.fit.g20204.kuznetsov.ui.buttons.filemanager.FileManagerButton;
 import ru.nsu.fit.g20204.kuznetsov.ui.buttons.instruments.InstrumentsButtonGroup;
 
 import javax.swing.*;
@@ -23,7 +24,8 @@ public class ToolBar extends JToolBar {
      */
     public ToolBar() {
         super("Instruments");
-        add(new FileManagerButton());
+        add(new OpenButton());
+        add(new SaveButton());
         addSeparator();
         instrumentsButtonGroup.set(this);
         addSeparator();

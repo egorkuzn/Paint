@@ -56,4 +56,22 @@ public class FileExplorer {
             logger.warning("Cannot read chosen image");
         }
     }
+
+    public static void saveFile() {
+        if (History.getPath() == null) {
+            var saveChooser = new JFileChooser();
+            saveChooser.showDialog(MainFrame.getInstance(), "Save");
+            saveChooser.setFileSelectionMode(JFileChooser.SAVE_DIALOG);
+            History.setPath(saveChooser.getSelectedFile().getPath());
+        }
+
+        if (!History.getScreens().isEmpty()) {
+            try {
+                ImageIO.write(History.getLastScreen(), History.getFormat(), new File(History.getPath()));
+                logger.info("Saved: " + History.getPath());
+            } catch (IOException ex) {
+                logger.info("Cannot save in png format");
+            }
+        }
+    }
 }

@@ -104,4 +104,8 @@ public class Hand {
                 && point.y < History.getMaxHeight()
                 && point.y >= 0;
     }
+
+    public static void setFilterType(FilterType type) {
+        filterType = type;
+    }
 }

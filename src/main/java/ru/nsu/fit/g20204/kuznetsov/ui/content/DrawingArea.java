@@ -62,9 +62,13 @@ public class DrawingArea extends JLabel {
             case HAND -> HandController.paint(g);
         }
 
-        dashBoardSet(g);
+        if (History.getLastScreen().getWidth() != 1 && History.getLastScreen().getHeight() != 1)
+            dashBoardSet(g);
     }
 
+    /**
+     * @param g needs for setting bounds rectangle
+     */
     public void dashBoardSet(Graphics g) {
         var g2 = (Graphics2D) g;
         // Устанавливаем толщину и стиль линии

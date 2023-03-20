@@ -2,6 +2,7 @@ package ru.nsu.fit.g20204.kuznetsov.ui.menu.file;
 
 import ru.nsu.fit.g20204.kuznetsov.History;
 import ru.nsu.fit.g20204.kuznetsov.ui.MainFrame;
+import ru.nsu.fit.g20204.kuznetsov.util.FileExplorer;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -22,21 +23,7 @@ public class Save extends JMenuItem {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                if (History.getPath() == null) {
-                    var saveChooser = new JFileChooser();
-                    saveChooser.showDialog(MainFrame.getInstance(), "Save");
-                    saveChooser.setFileSelectionMode(JFileChooser.SAVE_DIALOG);
-                    History.setPath(saveChooser.getSelectedFile().getPath());
-                }
-
-                if (!History.getScreens().isEmpty()) {
-                    try {
-                        ImageIO.write(History.getLastScreen(), History.getFormat(), new File(History.getPath()));
-                        logger.info("Saved: " + History.getPath());
-                    } catch (IOException ex) {
-                        logger.info("Cannot save in png format");
-                    }
-                }
+                FileExplorer.saveFile();
             }
         });
     }
