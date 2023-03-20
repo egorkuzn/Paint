@@ -67,27 +67,9 @@ public class DrawingArea extends JLabel {
     }
 
     private void dashBoardsSet() {
-        Border empty = BorderFactory.createEmptyBorder(0, -1, -1, -1);
+        Border empty = BorderFactory.createEmptyBorder(0, 0, 0, 0);
         Border dashed = BorderFactory.createDashedBorder(null, 5, 5);
         Border compound = new CompoundBorder(empty, dashed);
-        setBorder(compound);
-
-        empty = BorderFactory.createEmptyBorder(-1, 0, -1, -1);
-        dashed = BorderFactory.createDashedBorder(null, 5, 5);
-        dashed = new CompoundBorder(empty, dashed);
-        compound = new CompoundBorder(compound, dashed);
-        setBorder(compound);
-
-        empty = BorderFactory.createEmptyBorder(-1, -1, 0, -1);
-        dashed = BorderFactory.createDashedBorder(null, 5, 5);
-        dashed = new CompoundBorder(empty, dashed);
-        compound = new CompoundBorder(compound, dashed);
-        setBorder(compound);
-
-        empty = BorderFactory.createEmptyBorder(-1, -1, -1, 0);
-        dashed = BorderFactory.createDashedBorder(null, 5, 5);
-        dashed = new CompoundBorder(empty, dashed);
-        compound = new CompoundBorder(compound, dashed);
         setBorder(compound);
     }
 

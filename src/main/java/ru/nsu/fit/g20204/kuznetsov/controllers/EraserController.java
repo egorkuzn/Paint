@@ -4,7 +4,7 @@ import ru.nsu.fit.g20204.kuznetsov.Hand;
 
 import java.awt.*;
 
-public class EraserController extends PencilController{
+public class EraserController extends PencilController {
     public static void paint(Graphics g) {
         if (show) {
             Graphics2D g2 = (Graphics2D) g;
