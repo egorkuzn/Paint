@@ -16,10 +16,6 @@ public class FillerController implements Controller {
     private static int colorToBePainted;
     private static boolean isToDraw = false;
 
-    public static void control() {
-
-    }
-
     public static void beginControl(Point location) {
         finishPoint = location;
         isToDraw = true;
@@ -31,10 +27,7 @@ public class FillerController implements Controller {
     }
 
     public static void paint(Graphics g) {
-        if (isToDraw) {
-            History.setMaxWidth(DrawingArea.getInstance().getWidth());
-            History.setMaxHeight(DrawingArea.getInstance().getHeight());
-
+        if (isToDraw && Hand.isInBounds(finishPoint)) {
             setImageGraphics();
             colorToBePainted = image.getRGB(finishPoint.x, finishPoint.y);
 

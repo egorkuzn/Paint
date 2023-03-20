@@ -15,7 +15,7 @@ public abstract class BaseSlider extends JSlider {
         setToolTipText(toolTip + getValue());
 
 
-        setMajorTickSpacing(max - 1);
+        setMajorTickSpacing(max - min);
         setMinorTickSpacing(min);
 
         setPaintTicks(false);

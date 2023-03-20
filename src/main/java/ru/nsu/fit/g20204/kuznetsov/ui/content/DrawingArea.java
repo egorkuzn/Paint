@@ -11,21 +11,21 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.util.logging.Logger;
 
 import static java.awt.image.BufferedImage.TYPE_INT_RGB;
 
-public class DrawingArea extends JPanel {
+public class DrawingArea extends JLabel {
     private static DrawingArea drawingArea = null;
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-    private static boolean isSetBoard = true;
 
     private DrawingArea() {
         super();
         setMouseListener();
         setPreferredSize(new Dimension(History.getMaxWidth(), History.getMaxHeight()));
+        setBounds(new Rectangle(History.getMaxWidth(), History.getMaxHeight()));
+        dashBoardsSet();
     }
 
     public static DrawingArea getInstance() {
@@ -39,15 +39,15 @@ public class DrawingArea extends JPanel {
     /**
      * <code>paintComponent</code> draws last saved image
      * on the board and adds 2d graphics
+     *
      * @param g the <code>Graphics</code> object that
-     * allows to visualise 2d primitives.
+     *          allows to visualise 2d primitives.
      */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         update();
-        dashBoardsSet();
 
         if (!History.getScreens().isEmpty()) {
             g.setColor(Color.WHITE);
@@ -67,12 +67,28 @@ public class DrawingArea extends JPanel {
     }
 
     private void dashBoardsSet() {
-        if (isSetBoard) {
-            Border empty = BorderFactory.createEmptyBorder(0, -1, -1, -1);
-            Border dashed = BorderFactory.createDashedBorder(null, 5, 5);
-            Border compound = new CompoundBorder(empty, dashed);
-            setBorder(compound);
-        }
+        Border empty = BorderFactory.createEmptyBorder(0, -1, -1, -1);
+        Border dashed = BorderFactory.createDashedBorder(null, 5, 5);
+        Border compound = new CompoundBorder(empty, dashed);
+        setBorder(compound);
+
+        empty = BorderFactory.createEmptyBorder(-1, 0, -1, -1);
+        dashed = BorderFactory.createDashedBorder(null, 5, 5);
+        dashed = new CompoundBorder(empty, dashed);
+        compound = new CompoundBorder(compound, dashed);
+        setBorder(compound);
+
+        empty = BorderFactory.createEmptyBorder(-1, -1, 0, -1);
+        dashed = BorderFactory.createDashedBorder(null, 5, 5);
+        dashed = new CompoundBorder(empty, dashed);
+        compound = new CompoundBorder(compound, dashed);
+        setBorder(compound);
+
+        empty = BorderFactory.createEmptyBorder(-1, -1, -1, 0);
+        dashed = BorderFactory.createDashedBorder(null, 5, 5);
+        dashed = new CompoundBorder(empty, dashed);
+        compound = new CompoundBorder(compound, dashed);
+        setBorder(compound);
     }
 
     private void setMouseListener() {
@@ -103,8 +119,8 @@ public class DrawingArea extends JPanel {
             @Override
             public void mouseReleased(MouseEvent e) {
                 switch (Hand.getInstrument()) {
-                    case LINE -> LineController.finishControl(e.getPoint());
-                    case STAMP -> StampController.finishControl(e.getPoint());
+                    case LINE -> LineController.finishControl();
+                    case STAMP -> StampController.finishControl();
                     case ERASER -> EraserController.finishControl(e.getPoint());
                     case FILLER -> FillerController.finishControl();
                     case PENCIL -> PencilController.finishControl(e.getPoint());
@@ -144,12 +160,11 @@ public class DrawingArea extends JPanel {
      * and user can make undo action
      */
     public static void takeSnapshot() {
-        isSetBoard = false;
         getInstance().setBorder(BorderFactory.createEmptyBorder());
-        BufferedImage img = new BufferedImage(getInstance().getWidth(), DrawingArea.getInstance().getHeight(), TYPE_INT_RGB);
+        BufferedImage img = new BufferedImage(History.getMaxWidth(), History.getMaxHeight(), TYPE_INT_RGB);
         getInstance().print(img.getGraphics());
         History.saveScreen(img);
-        isSetBoard = true;
+        getInstance().dashBoardsSet();
     }
 
     public void update() {

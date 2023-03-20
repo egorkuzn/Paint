@@ -23,8 +23,6 @@ public class FileExplorer {
 
             if (path.substring(path.lastIndexOf(".") + 1).matches("png|jpg|jpeg|bmp|gif")) {
                 DrawingArea.getInstance().update();
-                History.setMaxWidth(DrawingArea.getInstance().getWidth());
-                History.setMaxHeight(DrawingArea.getInstance().getHeight());
                 History.setPath(path);
             } else {
                 JOptionPane.showMessageDialog(MainFrame.getInstance(),
@@ -43,6 +41,8 @@ public class FileExplorer {
                 var image = ImageIO.read(new File(History.getPath()));
 
                 if (image != null) {
+                    History.setMaxHeight(image.getHeight());
+                    History.setMaxWidth(image.getWidth());
                     History.saveScreen(image);
                     DrawingArea.getInstance().revalidate();
                 } else {

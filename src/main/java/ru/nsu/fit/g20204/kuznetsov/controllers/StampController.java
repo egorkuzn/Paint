@@ -1,6 +1,7 @@
 package ru.nsu.fit.g20204.kuznetsov.controllers;
 
 import ru.nsu.fit.g20204.kuznetsov.Hand;
+import ru.nsu.fit.g20204.kuznetsov.History;
 import ru.nsu.fit.g20204.kuznetsov.instruments.StampType;
 import ru.nsu.fit.g20204.kuznetsov.ui.content.DrawingArea;
 
@@ -13,10 +14,8 @@ public class StampController implements Controller {
     private static Point point = null;
     private static boolean isStartedPaint = false;
 
-    public static void control() {}
-
     public static void beginControl(Point location) {
-        if (isStartedPaint)
+        if (isStartedPaint && Hand.isInBounds(point))
             DrawingArea.takeSnapshot();
 
         isStartedPaint = !isStartedPaint;
@@ -24,12 +23,12 @@ public class StampController implements Controller {
         logger.info("stamp begin control");
     }
 
-    public static void finishControl(Point location) {
+    public static void finishControl() {
 
     }
 
     public static void paint(Graphics g) {
-        if (isStartedPaint) {
+        if (isStartedPaint && Hand.isInBounds(point)) {
             Graphics2D g2 = (Graphics2D) g;
             var xArr = new ArrayList<Integer>();
             var yArr = new ArrayList<Integer>();
@@ -45,6 +44,7 @@ public class StampController implements Controller {
             g2.drawPolygon(xArr.stream().mapToInt(Integer::valueOf).toArray(),
                     yArr.stream().mapToInt(Integer::valueOf).toArray(),
                     xArr.size());
+            g2.clipRect(0, 0, History.getMaxWidth(), History.getMaxHeight());
         }
     }
 

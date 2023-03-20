@@ -4,10 +4,10 @@ import ru.nsu.fit.g20204.kuznetsov.Hand;
 
 public class RotationTextField extends BaseTextField {
     private static RotationTextField rotationTextField = null;
-    private static final int limit = 360;
+    private static final int limit = 180;
 
     private RotationTextField() {
-        super(limit, Hand.getAngleDegrees());
+        super(-limit,limit, Hand.getAngleDegrees());
     }
 
     public static RotationTextField getInstance() {

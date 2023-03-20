@@ -1,12 +1,7 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.content;
 
-import ru.nsu.fit.g20204.kuznetsov.Hand;
-import ru.nsu.fit.g20204.kuznetsov.instruments.InstrumentType;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.logging.Logger;
 
 public class ScrollDrawingArea extends JScrollPane {
@@ -30,8 +25,8 @@ public class ScrollDrawingArea extends JScrollPane {
     }
 
     public void onDragged(Point coordinate, Point beginPoint) {
-        getVerticalScrollBar().setValue(getVerticalScrollBar().getValue() + (- coordinate.y + beginPoint.y) / 20);
-        getHorizontalScrollBar().setValue(getHorizontalScrollBar().getValue() + (- coordinate.x + beginPoint.x) / 20);
+        getVerticalScrollBar().setValue(getVerticalScrollBar().getValue() + (-coordinate.y + beginPoint.y) / 20);
+        getHorizontalScrollBar().setValue(getHorizontalScrollBar().getValue() + (-coordinate.x + beginPoint.x) / 20);
         logger.info("move");
     }
 

@@ -15,10 +15,6 @@ public class LineController implements Controller {
 
     private static boolean isStartedPaint = false;
 
-    public static void control() {
-
-    }
-
     public static void beginControl(Point location) {
         isStartedPaint = true;
         startPoint = location;
@@ -32,32 +28,28 @@ public class LineController implements Controller {
         logger.info("mediumControl");
     }
 
-    public static void finishControl(Point location) {
-        DrawingArea.takeSnapshot();
-        isStartedPaint = false;
-        logger.info("finishControl");
-    }
-
-    public static Point getStartPoint() {
-        return startPoint;
-    }
-
-    public static Point getFinishPoint() {
-        return finishPoint;
+    public static void finishControl() {
+        if (Hand.isInBounds(finishPoint)) {
+            DrawingArea.takeSnapshot();
+            isStartedPaint = false;
+            logger.info("finishControl");
+        }
     }
 
     public static void paint(Graphics g) {
-        if (isStartedPaint) {
-            if (Hand.getWidth() != 1) {
-                Graphics2D g2 = (Graphics2D) g;
-                g2.setColor(Hand.getColor());
-                g2.setStroke(new BasicStroke(Hand.getWidth()));
-                g2.drawLine(startPoint.x,
-                        startPoint.y,
-                        finishPoint.x,
-                        finishPoint.y);
-            } else {
-                brazenhemAlgo(g);
+        if (Hand.isInBounds(finishPoint)) {
+            if (isStartedPaint) {
+                if (Hand.getWidth() != 1) {
+                    Graphics2D g2 = (Graphics2D) g;
+                    g2.setColor(Hand.getColor());
+                    g2.setStroke(new BasicStroke(Hand.getWidth()));
+                    g2.drawLine(startPoint.x,
+                            startPoint.y,
+                            finishPoint.x,
+                            finishPoint.y);
+                } else {
+                    brazenhemAlgo(g);
+                }
             }
         }
     }
@@ -66,9 +58,6 @@ public class LineController implements Controller {
         int dx = Math.abs(finishPoint.x - startPoint.x);
         int dy = Math.abs(finishPoint.y - startPoint.y);
         int err = -dx;
-
-        History.setMaxWidth(DrawingArea.getInstance().getWidth());
-        History.setMaxHeight(DrawingArea.getInstance().getHeight());
 
         var img = History.getLastScreen();
         var newImg = new BufferedImage(History.getMaxWidth(), History.getMaxHeight(), img.getType());

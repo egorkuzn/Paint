@@ -13,8 +13,8 @@ public class History {
     private static final ArrayList<BufferedImage> screens = new ArrayList<>();
     private static String currentPath = null;
     private static int currentScreenIndex = -1;
-    private static int maxWidth = 500;
-    private static int maxHeight = 500;
+    private static int maxWidth = 1;
+    private static int maxHeight = 1;
 
     private History() {
         screens.add(new BufferedImage(1, 1, 1));
@@ -52,13 +52,12 @@ public class History {
         }
 
         if (img.getHeight() < maxHeight || img.getWidth() < maxWidth) {
-            BufferedImage newImg = new BufferedImage(maxWidth, maxHeight, getLastScreen().getType());
+            BufferedImage newImg = new BufferedImage(maxWidth, maxHeight, BufferedImage.TYPE_INT_RGB);
+            newImg.getGraphics().setColor(Color.WHITE);
+            newImg.getGraphics().fillRect(0, 0, maxWidth, maxHeight);
             newImg.setData(getLastScreen().getData());
             newImg.getGraphics().drawImage(img, 0, 0, img.getWidth(), img.getHeight(), Color.WHITE, DrawingArea.getInstance());
             img = newImg;
-        } else {
-            setMaxHeight(img.getHeight());
-            setMaxWidth(img.getWidth());
         }
 
         Redo.getInstance().deactivateRedo();

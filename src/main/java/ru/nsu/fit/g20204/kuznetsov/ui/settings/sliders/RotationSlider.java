@@ -6,7 +6,7 @@ public class RotationSlider extends BaseSlider {
     private static RotationSlider rotationSlider = null;
 
     private RotationSlider() {
-        super(0, 360, "Angle setting: ");
+        super(-180, 180, "Angle setting: ");
     }
 
     public static RotationSlider getInstance() {

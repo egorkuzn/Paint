@@ -97,4 +97,11 @@ public class Hand {
     public static FilterType getFilterType() {
         return filterType;
     }
+
+    public static boolean isInBounds(Point point) {
+        return point.x < History.getMaxWidth()
+                && point.x >= 0
+                && point.y < History.getMaxHeight()
+                && point.y >= 0;
+    }
 }
