@@ -62,7 +62,7 @@ public class DrawingArea extends JLabel {
             case HAND -> HandController.paint(g);
         }
 
-        if (History.getLastScreen().getWidth() != 1 && History.getLastScreen().getHeight() != 1)
+        if (History.getMaxWidth() != 1 && History.getMaxHeight() != 1)
             dashBoardSet(g);
     }
 
