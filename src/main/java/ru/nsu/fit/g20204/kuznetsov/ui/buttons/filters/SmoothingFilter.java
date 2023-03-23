@@ -5,7 +5,7 @@ import ru.nsu.fit.g20204.kuznetsov.instruments.FilterType;
 
 public class SmoothingFilter extends BaseFilter{
     public SmoothingFilter() {
-        super("instruments/palette.png", "SmoothingFilter");
+        super("filters/smoothing.png", "SmoothingFilter");
         Hand.setFilterType(FilterType.SMOOTHING);
     }
 }

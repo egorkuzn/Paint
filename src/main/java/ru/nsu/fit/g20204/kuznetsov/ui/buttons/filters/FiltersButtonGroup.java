@@ -13,6 +13,6 @@ public class FiltersButtonGroup extends ButtonGroup {
     public void set(ToolBar toolBar) {
         // TODO("Release filters buttons add");
         //        add(new Filter1(...));
-        //        add(new Filter2(...));
+        toolBar.add(new SmoothingFilter());
     }
 }
