@@ -34,8 +34,8 @@ public class StampsButtonGroup extends ButtonGroup {
 
     public static void doClick(StampType type) {
         switch (type) {
-            case Star -> star.doClick();
-            case Polygon -> polygon.doClick();
+            case STAR -> star.doClick();
+            case POLYGON -> polygon.doClick();
         }
     }
 }

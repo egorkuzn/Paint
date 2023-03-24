@@ -33,7 +33,7 @@ public class StampController implements Controller {
             var xArr = new ArrayList<Integer>();
             var yArr = new ArrayList<Integer>();
 
-            if (Hand.getStampType() == StampType.Polygon) {
+            if (Hand.getStampType() == StampType.POLYGON) {
                 getPolygonTops(xArr, yArr);
             } else {
                 getStarTops(xArr, yArr);

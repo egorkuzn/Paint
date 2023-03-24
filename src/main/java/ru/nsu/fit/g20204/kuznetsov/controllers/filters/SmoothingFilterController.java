@@ -2,6 +2,7 @@ package ru.nsu.fit.g20204.kuznetsov.controllers.filters;
 
 import ru.nsu.fit.g20204.kuznetsov.History;
 import ru.nsu.fit.g20204.kuznetsov.ui.content.DrawingArea;
+import ru.nsu.fit.g20204.kuznetsov.util.FilterUtil;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -45,9 +46,11 @@ public class SmoothingFilterController extends BaseFilterController {
      */
     public static int getValueFilter(BufferedImage imageBoarder, double[][] matrixFilter, int x, int y) {
         int startX = x , startY = y ;
+
         double resultRed = 0;
         double resultBlue = 0;
         double resultGreen = 0;
+
         for (int i = 0; i < matrixFilter.length; i++) {
             for (int j = 0; j < matrixFilter.length; j++) {
                 int rgb = imageBoarder.getRGB(startX + i, startY + j);
@@ -63,6 +66,7 @@ public class SmoothingFilterController extends BaseFilterController {
 
             }
         }
+
         return (0xff << 24) | ((int) (resultRed) << 16) | ((int) (resultGreen) << 8) | (int) (resultBlue);
     }
 
@@ -80,18 +84,22 @@ public class SmoothingFilterController extends BaseFilterController {
         g2d.drawImage(image, n, n, image.getWidth(), image.getHeight(), null);
 
         g2d.dispose();
+
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < n; j++) {
                 newImage.setRGB(i + n, j, image.getRGB(i, n - j));
             }
+
             for (int j = 1; j <= n; j++) {
                 newImage.setRGB(i + n, newImage.getHeight() - j, image.getRGB(i, image.getHeight() - n + j - 1));
             }
         }
+
         for (int i = 0; i < newImage.getHeight(); i++) {
             for (int j = 0; j < n; j++) {
                 newImage.setRGB(j, i, newImage.getRGB(2 * n - j, i));
             }
+
             for (int j = 0; j < n; j++) {
                 newImage.setRGB(newImage.getWidth() - j - 1, i, newImage.getRGB(image.getWidth() + j, i));
             }
@@ -102,17 +110,20 @@ public class SmoothingFilterController extends BaseFilterController {
 
 
     public static void performImage(Graphics g) {
-        BufferedImage currentImage = History.getLastScreen();
+        BufferedImage image = FilterUtil.getNewImage();
 
         double[][] matrix_filter = getGaussMatrix(n, sigma);
-        BufferedImage imageB = addBoarderImage(currentImage, n/2);
+        BufferedImage imageB = addBoarderImage(image, n/2);
 
-        for (int i = 0; i < currentImage.getWidth(); i++) {
-            for (int j = 0; j < currentImage.getHeight(); j++) {
-                currentImage.setRGB(i, j, getValueFilter(imageB, matrix_filter, i, j));
+        for (int i = 0; i < image.getWidth(); i++) {
+            for (int j = 0; j < image.getHeight(); j++) {
+                image.setRGB(i, j, getValueFilter(imageB, matrix_filter, i, j));
             }
         }
+
         Graphics2D g2 = (Graphics2D) g;
-        g2.drawImage(currentImage, 0, 0, History.getMaxWidth(), History.getMaxHeight(), java.awt.Color.WHITE, DrawingArea.getInstance());
+        g2.drawImage(image, 0, 0, History.getMaxWidth(), History.getMaxHeight(), java.awt.Color.WHITE, DrawingArea.getInstance());
+
+        History.saveScreen(image);
     }
 }

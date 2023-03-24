@@ -2,10 +2,11 @@ package ru.nsu.fit.g20204.kuznetsov.ui.buttons;
 
 
 import ru.nsu.fit.g20204.kuznetsov.Hand;
+import ru.nsu.fit.g20204.kuznetsov.instruments.FilterType;
 import ru.nsu.fit.g20204.kuznetsov.instruments.InstrumentType;
 import ru.nsu.fit.g20204.kuznetsov.instruments.StampType;
 import ru.nsu.fit.g20204.kuznetsov.ui.settings.SettingsLabel;
-import ru.nsu.fit.g20204.kuznetsov.ui.settings.SettingsManager;
+import ru.nsu.fit.g20204.kuznetsov.util.SettingsManager;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -18,7 +19,7 @@ import java.util.logging.Logger;
 
 public abstract class ToolButton extends JButton {
 
-    private final String name;
+    private String name;
     private boolean settingsStatus = true;
 
     protected Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -35,24 +36,51 @@ public abstract class ToolButton extends JButton {
     public ToolButton(String imagePath,
                       String tip,
                       InstrumentType instrument) {
-        name = tip;
-        setFocusPainted(false);
         init(imagePath, tip);
         pressedButtonsControl.put(this, false);
-
         addActionListener(action -> {
-            logger.info("Clicked");
-            turnOffAll();
-            chosenViewUpdate(instrument, tip);
-
-            if (instrument.isSettable()) {
-                settingsLabelUpdate(instrument);
-            } else {
-                SettingsLabel.getInstance().setVisible(false);
-            }
-
-            pressedButtonsControl.put(toolButton, true);
+            actionListenerAdder(instrument);
         });
+    }
+
+    /**
+     * Stamp tool button constructor
+     */
+    public ToolButton(String imagePath,
+                      StampType stampType) {
+        init(imagePath, stampType.name().toLowerCase() + " stamp");
+        pressedButtonsControl.put(this, false);
+        addActionListener(action -> {
+            actionListenerAdder(InstrumentType.STAMP);
+            Hand.setStampType(stampType);
+        });
+    }
+
+    /**
+     * Filter tool button constructor
+     */
+    public ToolButton(String imagePath,
+                      FilterType filterType) {
+        init(imagePath, filterType.name().toLowerCase() + " filter");
+        pressedButtonsControl.put(this, false);
+        addActionListener(action -> {
+            actionListenerAdder(InstrumentType.FILTER);
+            Hand.setFilterType(filterType);
+        });
+    }
+
+    private void actionListenerAdder(InstrumentType instrument) {
+        logger.info("Clicked");
+        turnOffAll();
+        chosenViewUpdate(instrument);
+
+        if (instrument.isSettable()) {
+            settingsLabelUpdate(instrument);
+        } else {
+            SettingsLabel.getInstance().setVisible(false);
+        }
+
+        pressedButtonsControl.put(toolButton, true);
     }
 
     private void settingsLabelUpdate(InstrumentType instrument) {
@@ -75,17 +103,12 @@ public abstract class ToolButton extends JButton {
         }
     }
 
-    private void chosenViewUpdate(InstrumentType instrument, String tip) {
+    private void chosenViewUpdate(InstrumentType instrument) {
         if (!pressedButtonsControl.get(toolButton)) {
             setSelected(true);
         }
 
-        logger.info(tip.toUpperCase() + " chosen");
         Hand.take(instrument);
-
-        if (instrument == InstrumentType.STAMP) {
-            Hand.setStampType(StampType.valueOf(tip));
-        }
     }
 
     public void turnOff() {
@@ -101,13 +124,14 @@ public abstract class ToolButton extends JButton {
      */
     public ToolButton(String imagePath,
                       String tip) {
-        name = tip;
-        setFocusPainted(false);
         init(imagePath, tip);
     }
 
     private void init(String imagePath,
                       String tip) {
+        name = tip;
+        setFocusPainted(false);
+
         InputStream stream = getClass().getClassLoader().getResourceAsStream(imagePath);
 
         int width = 25;

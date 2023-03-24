@@ -24,7 +24,7 @@ public class Hand {
     private static int radiusValue = 200;
     private static int x = 0;
     private static int y = 0;
-    private static StampType stampType = StampType.Polygon;
+    private static StampType stampType = StampType.POLYGON;
 
     public static void take(InstrumentType newInstrument) {
         instrument = newInstrument;

@@ -1,12 +1,10 @@
 package ru.nsu.fit.g20204.kuznetsov.ui.buttons.filters.aphine;
 
-import ru.nsu.fit.g20204.kuznetsov.Hand;
 import ru.nsu.fit.g20204.kuznetsov.instruments.FilterType;
-import ru.nsu.fit.g20204.kuznetsov.ui.buttons.filters.BaseFilter;
+import ru.nsu.fit.g20204.kuznetsov.ui.buttons.ToolButton;
 
-public class Rotation extends BaseFilter {
+public class Rotation extends ToolButton {
     public Rotation() {
-        super("filters/aphine/rotation.png", "Rotation");
-        Hand.setFilterType(FilterType.ROTATION);
+        super("filters/aphine/rotation.png", FilterType.ROTATION);
     }
 }
